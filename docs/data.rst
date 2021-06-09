@@ -25,16 +25,19 @@ to dN/dlogDp and multiple charge correction)
 
 
 Inverted files .cle
-    1. Row: geometric mean diameters [m]
-    2. Column: DOY (1.1. at noon = 1.5)
-    3. Column: Total number concentration /cm3
-    3. 3 rd to 2 nd last column: dN/dLog(Dp)
-    4. Last column: Flag
+1. Row: geometric mean diameters [m]
+2. Column: DOY (1.1. at noon = 1.5)
+3. Column: Total number concentration /cm3
+3. 3 rd to 2 nd last column: dN/dLog(Dp)
+4. Last column: Flag
 
-Flag can be:
-    0 = good data, use only this!
-    1 = wind from polluted sector 0-90 degrees
-    2 = wind speed too low, <1 m/s
-    3 = suspect instrument problem
-    4 = suspect local pollution
-    999 = instrument problem or local pollution (years 2015, 2017 data, these were not separated)
+==== ===========
+Flag Description
+==== ===========
+0    Ggood data, use only this!
+1    wind from polluted sector 0-90 degrees
+2    wind speed too low, <1 m/s
+3    suspect instrument problem
+4    suspect local pollution
+999  instrument problem or local pollution (years 2015, 2017 data, these were not separated)
+==== ===========

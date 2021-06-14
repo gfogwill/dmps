@@ -6,3 +6,4 @@ click
 Sphinx
 coverage
 python-dotenv>=0.5.1
+ebas

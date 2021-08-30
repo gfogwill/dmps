@@ -28,8 +28,52 @@ requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
 ## Make Dataset
-data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+#data: requirements
+#	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+
+.PHONY: data
+data: datasets
+
+.PHONY: raw
+raw: datasources
+
+.PHONY: datasources
+datasources: .make.datasources
+
+.make.datasources: catalog/datasources/*
+	$(PYTHON_INTERPRETER) -m $(MODULE_NAME).workflow datasources
+	#touch .make.datasources
+
+.PHONY: datasets
+datasets: .make.datasets
+
+.make.datasets: catalog/datasets/* catalog/transformers/*
+	$(PYTHON_INTERPRETER) -m $(MODULE_NAME).workflow datasets
+	#touch .make.datasets
+
+.PHONY: clean
+## Delete all compiled Python files
+clean:
+	find . -type f -name "*.py[co]" -delete
+	find . -type d -name "__pycache__" -delete
+	rm -f .make.*
+
+.PHONY: clean_interim
+clean_interim:
+	rm -rf data/interim/*
+
+.PHONY: clean_raw
+clean_raw:
+	rm -f data/raw/*
+
+.PHONY: clean_processed
+clean_processed:
+	rm -f data/processed/*
+
+.PHONY: clean_workflow
+clean_workflow:
+	rm -f catalog/datasources.json
+	rm -f catalog/transformer_list.json
 
 ## Delete all compiled Python files
 clean:

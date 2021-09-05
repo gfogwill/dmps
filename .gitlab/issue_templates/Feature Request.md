@@ -1,30 +1,13 @@
-## Problem Statement
-<!-- What is the issue being faced and needs addressing? !-->
+## Describe the ideal solution or feature request
+A clear and concise description of what the customer wants to happen.
 
-## Who will benefit?
-<!-- Will this fix a problem that only one user has, or will it benefit a lot of people !-->
+## Difficulty, impact, and usage score
+| Technical difficulty | User goals | Usage frequency |
+|--------------------| --------------------| --------------------|
+| ie. Small, medium, large (filled out after submission) |  ie. How important is this to the user, what the user wants to accomplish | ie. Daily, weekly, monthly |
 
-## Benefits and risks
-<!-- 
-    What benefits does this bring?
-        - reduced support issues
-        - save error prone manual checks
-        - automate labour intensive tasks
-        
-    What risks might this introduce?
-        - May result in more data being shared with staff
-        - requires training materials to be updated
-        - Involves working with a specific vendor for a fixed period.
-!-->
+## How does this tie into our current product?
+Describe whether this request is related to an existing workflow, feature, or otherwise something in the product today. Or, does this open us up to new markets and innovative ideas?
 
-## Proposed solution
-<!-- How would you like to see this issue resolved? !-->
-
-## Examples
-<!-- Are there any examples of this which exist in other software? !-->
-
-## Priority/Severity
-<!-- Delete as appropriate. The priority and severity assigned may be different to this !-->
-- [ ] High (This will bring a huge increase in performance/productivity/usability/legislative cover)
-- [ ] Medium (This will bring a good increase in performance/productivity/usability)
-- [ ] Low (anything else e.g., trivial, minor improvements)
+## Who asked for this?
+Add more on who asked for this, ie. company, person, how much they pay us, what their tier is, are they a strategic account, etc.

@@ -207,6 +207,9 @@ class Dataset(object):
     def __getitem__(self, item):
             return getattr(self, item)
 
+    def __setitem__(self, item):
+            return setattr(self, item)
+
     def __getattribute__(self, key):
         if key.isupper():
             try:

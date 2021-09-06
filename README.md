@@ -30,9 +30,10 @@ recommend creating a virtual environment with a tool such as
 [virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```console
-$ virtualenv -p python3 .venv
-$ source .venv/bin/activate
-$ pip install -r requirements.txt
+$ cd dmps
+$ make create_environment
+$ conda activate dmps
+$ make requirements
 ```
 
 

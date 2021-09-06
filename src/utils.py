@@ -22,6 +22,8 @@ __all__ = [
     'read_space_delimited',
     'reservoir_sample',
     'serialize_partial',
+    'load_json',
+    'save_json'
 ]
 
 _MODULE = sys.modules[__name__]

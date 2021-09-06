@@ -2,7 +2,14 @@
 -e .
 
 # external requirements
-click
+click~=8.0.1
 Sphinx
 coverage
 python-dotenv>=0.5.1
+
+matplotlib~=3.3.4
+numpy~=1.19.5
+pandas~=1.1.5
+src~=0.1.0
+joblib~=1.0.1
+setuptools~=57.0.0

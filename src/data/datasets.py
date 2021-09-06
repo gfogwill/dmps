@@ -202,6 +202,9 @@ class Dataset(object):
             data_hashes = self.get_data_hashes()
             self['metadata'] = {**self['metadata'], **data_hashes}
 
+    def __getitem__(self, item):
+            return getattr(self, item)
+
     def __getattribute__(self, key):
         if key.isupper():
             try:

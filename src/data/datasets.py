@@ -184,6 +184,7 @@ class Dataset(object):
             If True, update the data/target hashes in the Metadata.
         """
         super().__init__(**kwargs)
+        
 
         if dataset_name is None:
             if metadata is not None and metadata.get("dataset_name", None) is not None:
@@ -194,7 +195,8 @@ class Dataset(object):
         if metadata is not None:
             self['metadata'] = metadata
         else:
-            self['metadata'] = {}
+            # self['metadata'] = {}
+            self.metadata = {}
         self['metadata']['dataset_name'] = dataset_name
         self['data'] = data
         self['target'] = target

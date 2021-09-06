@@ -31,8 +31,8 @@ recommend creating a virtual environment with a tool such as
 
 ```console
 $ cd dmps
-$ make create_environment
-$ conda activate dmps
+$ python -m venv venv
+$ source venv/bin/activate
 $ make requirements
 ```
 

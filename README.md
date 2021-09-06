@@ -30,8 +30,8 @@ recommend creating a virtual environment with a tool such as
 [virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```console
-cd dmps
-make create_environment
+$ cd dmps
+$ make create_environment
 $ conda activate dmps
 $ make requirements
 ```

@@ -8,7 +8,7 @@ from ..paths import processed_data_path, raw_data_path, interim_data_path
 from ..log import logger
 from ..utils import load_json, save_json
 from ..utils import partial_call_signature, serialize_partial, deserialize_partial, process_dataset_default
-
+from .fetch import fetch_file, unpack, get_dataset_filename
 
 # def read_cle(filename, has_flag=False, col_names=None):
 #     """Read a DMPS inverted .cle file
@@ -205,10 +205,10 @@ class Dataset(object):
             self['metadata'] = {**self['metadata'], **data_hashes}
 
     def __getitem__(self, item):
-            return getattr(self, item)
+        return getattr(self, item)
 
-    def __setitem__(self, item):
-            return setattr(self, item)
+    def __setitem__(self, item, new_value):
+        return setattr(self, item, new_value)
 
     def __getattribute__(self, key):
         if key.isupper():
@@ -441,8 +441,7 @@ class RawDataset(object):
         if dataset_dir is None:
             dataset_dir = raw_data_path
         if load_function is None:
-            raise Exception('Not implemented yet')
-            # load_function = process_dataset_default
+            load_function = process_dataset_default
         self.name = name
         self.file_list = file_list
         self.load_function = load_function
@@ -510,10 +509,10 @@ class RawDataset(object):
         fq_file = pathlib.Path(self.dataset_dir) / file_name
         if not fq_file.exists():
             logger.warning(f"{file_name} not found on disk")
-        fetch_dict = {'hash_type':hash_type,
-                      'hash_value':hash_value,
+        fetch_dict = {'hash_type': hash_type,
+                      'hash_value': hash_value,
                       'name': name,
-                      'file_name':file_name}
+                      'file_name': file_name}
         self.file_list.append(fetch_dict)
         self.fetched_ = False
 
@@ -534,10 +533,10 @@ class RawDataset(object):
         """
 
         fetch_dict = {'url': url,
-                      'hash_type':hash_type,
-                      'hash_value':hash_value,
+                      'hash_type': hash_type,
+                      'hash_value': hash_value,
                       'name': name,
-                      'file_name':file_name}
+                      'file_name': file_name}
         self.file_list.append(fetch_dict)
         self.fetched_ = False
 
@@ -558,18 +557,17 @@ class RawDataset(object):
         for item in self.file_list:
             raise Exception('Not implemented yet!')
             # status, result, hash_value = fetch_file(**item)
-            if status:
-                item['hash_value'] = hash_value
-                self.fetched_files_.append(result)
-            else:
-                if item.get('url', False):
-                    logger.error(f"fetch of {item['url']} returned: {result}")
-                    break
+            # if status:
+            #     item['hash_value'] = hash_value
+            #     self.fetched_files_.append(result)
+            # else:
+            #     if item.get('url', False):
+            #         logger.error(f"fetch of {item['url']} returned: {result}")
+            #         break
         else:
             self.fetched_ = True
 
         return self.fetched_
-
 
     def unpack(self, unpack_path=None, force=False):
         """Unpack fetched files to interim dir"""
@@ -586,7 +584,7 @@ class RawDataset(object):
                 unpack_path = pathlib.Path(unpack_path)
             for filename in self.fetched_files_:
                 raise Exception('Not implemented yet!')
-                # unpack(filename, dst_dir=unpack_path)
+                unpack(filename, dst_dir=unpack_path)
             self.unpacked_ = True
             self.unpack_path_ = unpack_path
 

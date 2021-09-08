@@ -25,7 +25,7 @@ def main(input_filepath, output_filepath, year):
     # """
 
     if year is None:
-        click.prompt("Year to process: ", type=int)
+        year = click.prompt("Year to process: ", type=int)
 
     manual_labels(input_filepath=input_filepath,
                   output_filepath=output_filepath,

@@ -71,6 +71,7 @@ __all__ = [
 _MODULE = sys.modules[__name__]
 _MODULE_DIR = pathlib.Path(os.path.dirname(os.path.abspath(__file__)))
 
+
 def available_datasets(dataset_path=None, keys_only=True):
     """Get a list of available datasets.
 
@@ -184,7 +185,6 @@ class Dataset(object):
             If True, update the data/target hashes in the Metadata.
         """
         super().__init__(**kwargs)
-        
 
         if dataset_name is None:
             if metadata is not None and metadata.get("dataset_name", None) is not None:
@@ -195,8 +195,8 @@ class Dataset(object):
         if metadata is not None:
             self['metadata'] = metadata
         else:
-            # self['metadata'] = {}
-            self.metadata = {}
+            self['metadata'] = {}
+            # self.metadata = {}
         self['metadata']['dataset_name'] = dataset_name
         self['data'] = data
         self['target'] = target
@@ -258,21 +258,21 @@ class Dataset(object):
     def load(cls, file_base, data_path=None, metadata_only=False):
         """Load a dataset
         must be present in dataset.json"""
-        raise Exception('Not implemented yet!')
-        # if data_path is None:
-        #     data_path = processed_data_path
-        # else:
-        #     data_path = pathlib.Path(data_path)
-        #
-        # if metadata_only:
-        #     metadata_fq = data_path / f'{file_base}.metadata'
-        #     with open(metadata_fq, 'rb') as fd:
-        #         meta = joblib.load(fd)
-        #     return meta
-        #
-        # with open(data_path / f'{file_base}.dataset', 'rb') as fd:
-        #     ds = joblib.load(fd)
-        # return ds
+
+        if data_path is None:
+            data_path = processed_data_path
+        else:
+            data_path = pathlib.Path(data_path)
+
+        if metadata_only:
+            metadata_fq = data_path / f'{file_base}.metadata'
+            with open(metadata_fq, 'rb') as fd:
+                meta = joblib.load(fd)
+            return meta
+
+        with open(data_path / f'{file_base}.dataset', 'rb') as fd:
+            ds = joblib.load(fd)
+        return ds
 
     @classmethod
     def from_raw(cls, dataset_name,
@@ -555,15 +555,14 @@ class RawDataset(object):
         self.fetched_ = False
         self.fetched_files_ = []
         for item in self.file_list:
-            raise Exception('Not implemented yet!')
-            # status, result, hash_value = fetch_file(**item)
-            # if status:
-            #     item['hash_value'] = hash_value
-            #     self.fetched_files_.append(result)
-            # else:
-            #     if item.get('url', False):
-            #         logger.error(f"fetch of {item['url']} returned: {result}")
-            #         break
+            status, result, hash_value = fetch_file(**item)
+            if status:
+                item['hash_value'] = hash_value
+                self.fetched_files_.append(result)
+            else:
+                if item.get('url', False):
+                    logger.error(f"fetch of {item['url']} returned: {result}")
+                    break
         else:
             self.fetched_ = True
 
@@ -583,7 +582,6 @@ class RawDataset(object):
             else:
                 unpack_path = pathlib.Path(unpack_path)
             for filename in self.fetched_files_:
-                raise Exception('Not implemented yet!')
                 unpack(filename, dst_dir=unpack_path)
             self.unpacked_ = True
             self.unpack_path_ = unpack_path

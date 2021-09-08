@@ -24,16 +24,17 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, save_X_y
     """Manually label NPF events
 
     """
+    if year is None:
+        year = input("Year: ")
+        # raise Exception('Year is needed!')
+    else:
+        year = str(year)
+
     if input_filepath is None:
         input_filepath = external_data_path / f'DMPSmbiocle{year}.dat'
 
     if output_filepath is None:
         output_filepath = processed_data_path / f'events-{year}.csv'
-
-    if year is None:
-        raise Exception('Year is needed!')
-    else:
-        year = str(year)
 
     clean_dir(processed_data_path / year)
 

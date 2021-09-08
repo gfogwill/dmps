@@ -9,7 +9,7 @@ import zlib
 import requests
 
 from ..paths import raw_data_path, interim_data_path
-from ..logging import logger
+from ..log import logger
 
 __all__ = [
     'available_hashes',
@@ -246,6 +246,7 @@ def fetch_file(url=None, contents=None,
     logger.debug(f'Retrieved {raw_data_file.name} (hash '
                  f'{hash_type}:{raw_file_hash})')
     return results.status_code, raw_data_file, raw_file_hash
+
 
 def unpack(filename, dst_dir=None, create_dst=True):
     '''Unpack a compressed file

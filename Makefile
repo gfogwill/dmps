@@ -64,6 +64,8 @@ process_raw:
 transform_data:
 	$(PYTHON_INTERPRETER) -m src.data.apply_transforms transformer_list.json
 
+manual_labeling:
+	$(PYTHON_INTERPRETER) -m src.data.make_labels
 
 .PHONY: clean
 ## Delete all compiled Python files

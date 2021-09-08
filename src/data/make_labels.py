@@ -15,7 +15,8 @@ from ..log import logger
 @click.option('--input_filepath', type=click.Path(exists=True), default=None)
 @click.option('--output_filepath', type=click.Path(), default=None)
 @click.option('--year', type=int)
-def main(input_filepath, output_filepath, year):
+@click.option('--dataset-name', type=str)
+def main(input_filepath, output_filepath, year, dataset_name):
     """ uns script to mannualy label new particle formation events of DMPS files
 
         (../raw) intoleaned data ready to be analyzed (saved in ../processed).
@@ -25,11 +26,15 @@ def main(input_filepath, output_filepath, year):
     # """
 
     if year is None:
-        year = click.prompt("Year to process: ", type=int)
+        year = click.prompt("Year to process?", type=int)
 
+    if dataset_name is None:
+        dataset_name = click.prompt("Dataset name?", type=str)
+        
     manual_labels(input_filepath=input_filepath,
                   output_filepath=output_filepath,
-                  year=year)
+                  year=year,
+                  dataset_name=dataset_name)
 
 
 if __name__ == '__main__':

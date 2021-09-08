@@ -8,7 +8,7 @@ from datetime import timedelta
 import matplotlib.dates as mdates
 import matplotlib
 from src.utils import clean_dir
-from src.paths import processed_data_path, external_data_path
+from src.paths import processed_data_path, external_data_path, interim_data_path
 
 
 plt.close('all')
@@ -20,7 +20,7 @@ mngr.window.setGeometry = (50, 100, 640, 545)
 plt.show(block=False)
 
 
-def manual_labels(input_filepath=None, output_filepath=None, year=None, save_X_y=True):
+def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_name=None, save_X_y=True):
     """Manually label NPF events
 
     """
@@ -37,7 +37,7 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, save_X_y
 
     clean_dir(processed_data_path / year)
 
-    data, flags = read_interim_file(input_filepath / f'DMPSmbiocle{year}.dat',
+    data, flags = read_interim_file(input_filepath / dataset_name / f'DMPSmbiocle{year}.dat',
                                     has_flag=True,
                                     year=year,
                                     utc_time=False)

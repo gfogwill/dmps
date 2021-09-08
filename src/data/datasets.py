@@ -124,12 +124,14 @@ def process_raw_datasets(raw_datasets=None, action='process'):
             ds = raw_ds.process()
             logger.info(f'{dataset_name}: processed data has shape:{ds.data.shape}')
 
+
 def add_raw_dataset(rawds):
     """Add a raw dataset to the list of available raw datasets"""
 
     rawds_list, rds_file_fq = available_raw_datasets(keys_only=False)
     rawds_list[rawds.name] = rawds.to_dict()
     save_json(rds_file_fq, rawds_list)
+
 
 def available_raw_datasets(raw_dataset_file='raw_datasets.json',
                            raw_dataset_path=None, keys_only=True):
@@ -676,14 +678,13 @@ class RawDataset(object):
             name = fetch_dict.get('name', None)
             # if metadata is present in the URL list, use it
             if name in optmap:
-                raise Exception('Not implemented yet!')
-                # txtfile = get_dataset_filename(fetch_dict)
+                txtfile = get_dataset_filename(fetch_dict)
                 with open(raw_data_path / txtfile, 'r') as fr:
                     metadata[optmap[name]] = fr.read()
         if use_docstring:
             func = partial(self.load_function)
-            fqfunc, invocation =  partial_call_signature(func)
-            metadata['descr'] =  f'Data processed by: {fqfunc}\n\n>>> ' + \
+            fqfunc, invocation = partial_call_signature(func)
+            metadata['descr'] = f'Data processed by: {fqfunc}\n\n>>> ' + \
               f'{invocation}\n\n>>> help({func.func.__name__})\n\n' + \
               f'{func.func.__doc__}'
 

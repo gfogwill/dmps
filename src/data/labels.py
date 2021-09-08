@@ -25,20 +25,23 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, save_X_y
 
     """
     if year is None:
-        year = input("Year: ")
-        # raise Exception('Year is needed!')
+        raise Exception('Year is needed!')
     else:
         year = str(year)
 
     if input_filepath is None:
-        input_filepath = external_data_path / f'DMPSmbiocle{year}.dat'
+        input_filepath = interim_data_path
 
     if output_filepath is None:
         output_filepath = processed_data_path / f'events-{year}.csv'
 
     clean_dir(processed_data_path / year)
 
-    data, flags = read_interim_file(input_filepath, has_flag=True, year=year, utc_time=False)
+    data, flags = read_interim_file(input_filepath / f'DMPSmbiocle{year}.dat',
+                                    has_flag=True,
+                                    year=year,
+                                    utc_time=False)
+
     # for idx, day in data.groupby(pd.Grouper(freq='1d', origin='start')):
     # for file in input_filepath.glob('*.cle'):
     # for idx, day in data.groupby(data.index.date):

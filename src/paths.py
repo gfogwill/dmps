@@ -1,7 +1,7 @@
 import os
 import pathlib
 
-# Get the project directory as the parent of this module location
+# Get the project directory as the parent of this module locations
 src_module_dir = pathlib.Path(os.path.dirname(os.path.abspath(__file__)))
 project_dir = pathlib.Path(os.path.dirname(os.path.abspath(__file__))).parent
 

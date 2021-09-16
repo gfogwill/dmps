@@ -58,7 +58,6 @@ from .fetch import fetch_file, unpack, get_dataset_filename
 #     return df
 
 
-
 __all__ = [
     'Dataset',
     'RawDataset',
@@ -468,10 +467,12 @@ class RawDataset(object):
             metadata_path = raw_data_path
         else:
             metadata_path = pathlib.Path(metadata_path)
+
         filename_map = {
             'DESCR': f'{self.name}.readme',
             'LICENSE': f'{self.name}.license',
         }
+
         if kind not in filename_map:
             raise Exception(f'Unknown kind: {kind}. Must be one of {filename_map.keys()}')
 
@@ -623,7 +624,6 @@ class RawDataset(object):
             cache_path = pathlib.Path(cache_path)
 
         # If any of these things change, recreate and cache a new Dataset
-
         meta_hash = self.to_hash(**kwargs)
 
         dset = None

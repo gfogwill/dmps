@@ -27,6 +27,7 @@ _HASH_FUNCTION_MAP = {
     'sha256': hashlib.sha256,
 }
 
+
 def available_hashes():
     """Valid Hash Functions
 
@@ -50,6 +51,7 @@ def available_hashes():
     ['md5', 'sha1', 'sha256']
     """
     return _HASH_FUNCTION_MAP
+
 
 def hash_file(fname, algorithm="sha1", block_size=4096):
     '''Compute the hash of an on-disk file
@@ -310,6 +312,7 @@ def unpack(filename, dst_dir=None, create_dst=True):
             logger.debug(f"{verb} {outfile}")
             with open(pathlib.Path(dst_dir) / outfile, outmode) as f_out:
                 shutil.copyfileobj(f_in, f_out)
+
 
 def get_dataset_filename(ds_dict):
     """Figure out the downloaded filename for a dataset entry

@@ -558,7 +558,7 @@ class RawDataset(object):
         self.fetched_ = False
         self.fetched_files_ = []
         for item in self.file_list:
-            status, result, hash_value = fetch_file(**item)
+            status, result, hash_value = fetch_file(dst_dir=fetch_path, **item)
             if status:
                 item['hash_value'] = hash_value
                 self.fetched_files_.append(result)

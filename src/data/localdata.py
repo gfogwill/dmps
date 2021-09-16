@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 
 def read_interim_file(filename, has_flag=True, col_names=None, year=None, utc_time=True,
-                      resample_freq='10T'):
+                      resample_freq='10T', **kwargs) -> pd.DataFrame:
     """Read a DMPS inverted .cle file
     
     Data is multiple space-delimited. The file contains processed particle number size 
@@ -23,6 +23,9 @@ def read_interim_file(filename, has_flag=True, col_names=None, year=None, utc_ti
     col_names: arry-like, optional
         list of column names to use. Duplicates in this list are not allowed.
     resample_freq: str
+        pandas-like frequency string
+    year: int
+        year of the data
 
     Returns
     -------

@@ -17,7 +17,7 @@ from ..log import logger
 @click.option('--year', type=int)
 @click.option('--dataset-name', type=str)
 def main(input_filepath, output_filepath, year, dataset_name):
-    """ uns script to mannualy label new particle formation events of DMPS files
+    """ script to mannualy label new particle formation events of DMPS files
 
         (../raw) intoleaned data ready to be analyzed (saved in ../processed).
 

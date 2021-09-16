@@ -12,7 +12,7 @@ v{version}
 @click.version_option(version, "--version", "-V", help="Show version and exit")
 def cli():  # pragma: no cover
     """dmps is a CLI for working with DMPS observations data. For more
-    information, type ``dmps info``.
+    information, type ``dmps info``.a
     """
     pass
 

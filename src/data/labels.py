@@ -88,35 +88,6 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_
             break
 
 
-# def onclick(event):
-#     global ix, iy
-#     ix, iy = event.xdata, event.ydata
-#     # ix = mdates.num2date(ix)
-#
-#     # assign global variable to access outside of function
-#     global coords
-#     coords.append((ix, iy))
-#
-#     # Disconnect after 2 clicks
-#     if len(coords) == 2:
-#         fig.canvas.mpl_disconnect(cid)
-#         plt.close(1)
-#     return
-#
-#
-# coords = []
-#
-# plt.close('all')
-# fig, ax = plt.subplots()
-#
-# cid = fig.canvas.mpl_connect('button_press_event', onclick)
-#
-# mngr = plt.get_current_fig_manager()
-# mngr.window.setGeometry = (50, 100, 640, 545)
-#
-# plt.show(block=False)
-#
-#
 # def manual_labels(input_filepath=None, output_filepath=None, year=None, save_X_y=True, freq='7D'):
 #     """Manually label NPF events
 #

@@ -9,7 +9,7 @@ v{version}
 """
 
 
-@click.group(context_settings=CONTEXT_SETTINGS, name="DMPS")
+@click.group(context_settings=dict(help_option_names=["-h", "--help"]), name="DMPS")
 @click.version_option(version, "--version", "-V", help="Show version and exit")
 def cli():  # pragma: no cover
     """dmps is a CLI for working with DMPS observations data. For more

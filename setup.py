@@ -7,4 +7,5 @@ setup(
     description='Interface with DMPS observations',
     author='gfogwill',
     license='MIT',
+    entry_points={"console_scripts": ["dmps = src.cli:cli"]},
 )

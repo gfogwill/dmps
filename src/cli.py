@@ -1,3 +1,4 @@
+from src import __version__ as version
 
 import click
 from click.utils import get_os_args

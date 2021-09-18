@@ -5,6 +5,7 @@ from click.testing import CliRunner
 from src import __version__ as version
 from src.cli import cli
 
+
 class TestCLI(unittest.TestCase):
     def test_cli(self):
         """Run `dmps` without arguments."""

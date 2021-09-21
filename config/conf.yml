@@ -1,0 +1,77 @@
+header_lines: 1
+
+# Data originator / principal investigator name(s)
+#
+# Syntax:
+#   <last name 1>, <first name1>; <last name 2>, <first name2>; ...
+data_originator: Asmi, Eija
+
+# Details of the sponsoring organisation
+#
+# Description:
+#   The sponsoring organisation is the research institute funding (as opposed to conducting or quality assuring)
+#   a measurement. Unless required, funding agencies are usually not named here, but the primary research institute
+#   receiving a grant. Fields are comma separated. All commas have to be present. Fields may be left empty
+#   if not needed. If a comma is part of field content, enclose field content in "".
+#
+# Syntax:
+#   <lab code>, <organisation name>, <organisation acronym>, <organisation unit>, <organisation address 1>,
+#   , <organisation address 2>, <organisation ZIP>, <organisation town>, <organisation country>
+sponsoring_organisation: ??, Finnish Meteorological Institute, FMI, ??, Instituttveien 18, , 2007, Kjeller, Norway
+
+# Data submitter(s)
+#
+# Description:
+#   Last name(s) and first name(s) are separated by a comma. If more than one person is responsible for submitting the
+#  data, use the same syntax for all, and separate the names by a semi-colon.
+#
+# Syntax:
+#   <last name 1>, <first name 1>; <last name 2>, <first name 2>
+data_submitter: Asmi, Eija
+
+#Project association(s)
+#
+# Description
+#   Space separated list of project acronyms indicating the projects the data is associated with. For WDCA data,
+#   the GAW-WDCA project always has to be included. Additional project associations can be found at http://ebas.nilu.no.
+#   If further project associations are needed, please contact ebas@nilu.no.
+#
+# Syntax:
+#   <project acronym 1> <project acronym 2>
+project_association: GAW-WDCA
+
+#Timer interval between measurements
+#
+#  Description:
+#    The interval between consecutive measurement start points is stated in the same units as the file time axis, (fractional) days. For irregular data this value is set to 0.
+#
+#  NOTE:
+#    Please mind that this value must be consistent with the EBAS metadata element Set type code.
+#    For hourly averaged data the interval is 1/24 = 0.041667, for daily averaged data it is 1, for weekly data 7, etc.
+#    Stating this interval implies that it applies for the whole data section of the file.
+#    Please use a precision of at least 6 digits right of the decimal point for real numbers.
+#
+#  Syntax:
+#    <time interval>
+timer_interval_between_measurements: 0
+
+#Number of dependent data columns
+#
+#  Description:
+#    Total number of variables in addition to the start_time: end_time, all variables and numflag columns.
+#    As there is just one independent variable in NASA-Ames 1001 (EBAS uses start_time as independent variable),
+#    this will be equal the total number of data columns in the file minus 1.
+#    According to the original NASA-Ames 1001 definition, a file contains only one independent variable in the leftmost
+#    data column, usually the time variable. All other data columns are considered dependent variables.
+#    EBAS NASA-Ames contains additional fixed columns, the end time of the measurement (second from left) and one or
+#    more flag columns. These are accommodated as dependent columns.
+#    The number of other dependent columns depends on which components are analyzed in the samples.
+#    Line 10 states the total number of dependent variables / columns, including the EBAS NASA-Ames required columns
+#    (end_time of measurement, numflag(s)).
+#
+#  Syntax:
+#    <number of dependent data columns>
+number_of_dependent_data_columns: 20
+
+file_reference_date: 2008 06 24
+revision_date: 2008 06 24

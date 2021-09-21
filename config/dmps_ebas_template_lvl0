@@ -1,0 +1,152 @@
+$header_lines 1001
+$data_originator
+$sponsoring_organisation
+$data_submitter
+$project_association
+1 1
+$file_reference_date $revision_date
+$timer_interval_between_measurements
+days from file reference point
+$dependent
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+9999.999999 9999 9999 9999.99 9999.99 99 99 99 9999.99 9999.99 999.9 999.9 99.999 99.999 99.999 99.999 9999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 99.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9999.99999 9.999999999999999999999999999999999999999999999
+end_time of measurement, days from the file reference point
+start_time of measurement, year
+end_time of measurement, year
+pressure, hPa, Location=instrument internal, Matrix=instrument
+temperature, K, Location=instrument internal, Matrix=instrument
+status, no unit, Status type=CPC flow status, Matrix=instrument
+status, no unit, Status type=CPC liquid status, Matrix=instrument
+status, no unit, Status type=sheath flow status, Matrix=instrument
+temperature, K, Location=CPC saturator, Matrix=instrument
+temperature, K, Location=CPC condensor, Matrix=instrument
+relative_humidity, %, Location=sample line, Matrix=instrument
+relative_humidity, %, Location=sheath air loop, Matrix=instrument
+flow_rate, l/min, Location=sample line, Matrix=instrument
+flow_rate, l/min, Location=sample line, Matrix=instrument, Statistics=stddev
+flow_rate, l/min, Location=sheath air loop, Matrix=instrument
+flow_rate, l/min, Location=sheath air loop, Matrix=instrument, Statistics=stddev
+number of size bins
+particle_diameter, um, Size bin=1, Statistics=median
+particle_diameter, um, Size bin=1, Statistics=stddev
+particle_diameter, um, Size bin=2, Statistics=median
+particle_diameter, um, Size bin=2, Statistics=stddev
+particle_diameter, um, Size bin=3, Statistics=median
+particle_diameter, um, Size bin=3, Statistics=stddev
+particle_diameter, um, Size bin=4, Statistics=median
+particle_diameter, um, Size bin=4, Statistics=stddev
+particle_diameter, um, Size bin=5, Statistics=median
+particle_diameter, um, Size bin=5, Statistics=stddev
+particle_diameter, um, Size bin=6, Statistics=median
+particle_diameter, um, Size bin=6, Statistics=stddev
+particle_diameter, um, Size bin=7, Statistics=median
+particle_diameter, um, Size bin=7, Statistics=stddev
+particle_diameter, um, Size bin=8, Statistics=median
+particle_diameter, um, Size bin=8, Statistics=stddev
+particle_diameter, um, Size bin=9, Statistics=median
+particle_diameter, um, Size bin=9, Statistics=stddev
+particle_diameter, um, Size bin=10, Statistics=median
+particle_diameter, um, Size bin=10, Statistics=stddev
+particle_diameter, um, Size bin=11, Statistics=median
+particle_diameter, um, Size bin=11, Statistics=stddev
+particle_diameter, um, Size bin=12, Statistics=median
+particle_diameter, um, Size bin=12, Statistics=stddev
+particle_diameter, um, Size bin=13, Statistics=median
+particle_diameter, um, Size bin=13, Statistics=stddev
+particle_diameter, um, Size bin=14, Statistics=median
+particle_diameter, um, Size bin=14, Statistics=stddev
+particle_diameter, um, Size bin=15, Statistics=median
+particle_diameter, um, Size bin=15, Statistics=stddev
+particle_diameter, um, Size bin=16, Statistics=median
+particle_diameter, um, Size bin=16, Statistics=stddev
+particle_diameter, um, Size bin=17, Statistics=median
+particle_diameter, um, Size bin=17, Statistics=stddev
+particle_diameter, um, Size bin=18, Statistics=median
+particle_diameter, um, Size bin=18, Statistics=stddev
+particle_diameter, um, Size bin=19, Statistics=median
+particle_diameter, um, Size bin=19, Statistics=stddev
+particle_diameter, um, Size bin=20, Statistics=median
+particle_diameter, um, Size bin=20, Statistics=stddev
+particle_number_concentration, 1/cm3, Size bin=1, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=2, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=3, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=4, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=5, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=6, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=7, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=8, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=9, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=10, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=11, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=12, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=13, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=14, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=15, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=16, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=17, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=18, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=19, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+particle_number_concentration, 1/cm3, Size bin=20, Detection limit=0.0 1/cm3, "Detection limit expl.=Determined only by instrument counting statistics, no detection limit flag used", Measurement uncertainty=10.0 %
+numflag, no unit
+0
+61
+Data definition:              EBAS_1.1
+Set type code:                TI
+Timezone:                     UTC
+File name:                    NO0001R.20080101000000.20080624000000.dmps.particle_number_size_distribution.pm10.1y.6mn.NO01L_NILU_DMPSmodel2_BIR.NO01L_DMPS_control_lev0_0_0_1.lev0.nas
+Startdate:                    20080101000000
+Revision date:                20080624000000
+Version:                      1
+Version description:          initial revision, DMPS_control_lev0 v.0.0_1
+Data level:                   0
+Period code:                  1y
+Resolution code:              6mn
+Sample duration:              6mn
+Orig. time res.:              6mn
+Station code:                 NO0001R
+Platform code:                NO0001S
+Station name:                 Birkenes
+Station WDCA-ID:              GAWANO__BIR
+Station GAW-ID:               BIR
+Station GAW-Name:             Birkenes Atmospheric Observatory
+Station AIRS-ID:
+Station other IDs:            201(NILUDB)
+Station state/province:
+Station land use:             Forest
+Station setting:              Rural
+Station GAW type:             R
+Station WMO region:           6
+Station latitude:             58.383333
+Station longitude:            8.25
+Station altitude:             190.0 m
+Measurement latitude:         58.38
+Measurement longitude:        8.25
+Measurement altitude:         220.0 m
+Measurement height:           4.0 m
+Component:                    particle_number_size_distribution
+Unit:                         1/cm3
+Matrix:                       pm10
+Laboratory code:              NO01L
+Instrument type:              dmps
+Instrument name:              NILU_DMPSmodel2_BIR
+Instrument manufacturer:      NILU
+Instrument model:             DMPSmodel2
+Instrument serial number:     00001/2
+Method ref:                   NO01L_DMPS_control_lev0_0_0_1
+Standard method:              SOP=Wiedensohler2012
+Inlet type:                   Impactor--direct
+Inlet description:            PM10 at ambient humidity inlet, Digitel, flow 140 l/min
+Humidity/temperature control: Nafion dryer
+Humidity/temperature control description: sample dried to below 40% RH with nafion dryer operated with reduced pressure sheath air
+Volume std. temperature:      instrument internal
+Volume std. pressure:         instrument internal
+Detection limit:
+Detection limit expl.:
+Measurement uncertainty expl.: uncertainty range between instruments in intercomparison by Wiedensohler et al. 2012.
+Zero/negative values code:    Zero possible
+Zero/negative values:         Zero values may appear due to statistical variations at very low concentrations
+Originator:                   Fiebig, Markus, Markus.Fiebig@nilu.no, Norwegian Institute for Air Research, NILU, Atmosphere and Climate Department, Instituttveien 18, , 2007, Kjeller, Norway
+Originator:                   Someone, Else, Someone@somewhere.no, Some nice Institute, WOW, Super interesting division, Street 18, , X-9999, Paradise, Noway
+Submitter:                    Fiebig, Markus, Markus.Fiebig@nilu.no, Norwegian Institute for Air Research, NILU, Atmosphere and Climate Department, Instituttveien 18, , 2007, Kjeller, Norway
+Acknowledgement:              Request acknowledgement details from data originator
+Comment:                      None

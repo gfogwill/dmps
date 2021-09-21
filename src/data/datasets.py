@@ -697,6 +697,7 @@ class RawDataset(object):
         converts this object to a dict, and hashes the result,
         adding or removing keys as specified.
 
+        Args:
         hash_type: {'md5', 'sha1', 'sha256'}
             Hash algorithm to use
         ignore: list

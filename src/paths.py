@@ -1,12 +1,12 @@
 import os
 import pathlib
-
-# Get the project directory as the parent of this module location
+# Get the project directory as the parent of this module locations
 src_module_dir = pathlib.Path(os.path.dirname(os.path.abspath(__file__)))
 project_dir = pathlib.Path(os.path.dirname(os.path.abspath(__file__))).parent
 
 data_path = project_dir / 'data'
 catalog_path = project_dir / 'catalog'
+config_path = project_dir / 'config'
 
 raw_data_path = data_path / 'raw'
 interim_data_path = data_path / 'interim'

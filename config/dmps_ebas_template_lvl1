@@ -1,0 +1,101 @@
+$header_lines 1001
+$data_originator
+$sponsoring_organisation
+$data_submitter
+$project_association
+1 1
+2016 01 01 2016 09 24
+0
+$file_reference_date $revision_date
+$timer_interval_between_measurements
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+9999.999999 9999.9 9999.9 9999.9 9999 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 999999.99 9.999999999999999999999999999999999999999999999
+end_time of measurement, days from the file reference point
+pressure, hPa, Location=instrument internal, Matrix=instrument
+temperature, K, Location=instrument internal, Matrix=instrument
+relative_humidity, %, Location=instrument internal, Matrix=instrument
+number of size bins
+particle_number_size_distribution, 1/cm3, D=10.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=12.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=15.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=19.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=23.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=29.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=35.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=44.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=54.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=67.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=82.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=102.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=126.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=155.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=192.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=237.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=292.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=361.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=445.0 nm, Measurement uncertainty=10%
+particle_number_size_distribution, 1/cm3, D=550.0 nm, Measurement uncertainty=10%
+numflag
+0
+60
+Data definition:                EBAS_1.1
+Set type code:                  TI
+Station code:                   NO0001R
+Platform code:                  NO0001S
+Timezone:                       UTC
+Startdate:                      20160101000000
+Revision date:                  20160924000000
+Component:                      particle_number_size_distribution
+Unit:                           1/cm3
+Matrix:                         pm10
+Period code:                    1y
+Resolution code:                6mn
+Sample duration:                6mn
+Orig. time res.:                6mn
+Laboratory code:                NO01L
+Instrument type:                dmps
+Instrument manufacturer:        NILU
+Instrument model:               DMPSmodel2
+Instrument name:                NILU_DMPSmodel2_BIR
+Instrument serial number:       00001/2
+Method ref:                     NO01L_Adis_EUSAAR_NRT_DMPS_lev0_2_lev1_0_0_4
+File name:                      NO0001R.20160101000000.20160624000000.particle_number_size_distribution.pm10.1y.1h.nas
+Station WDCA-ID:                GAWANO__BIR
+Station GAW-Name:               Birkenes Atmospheric Observatory
+Station GAW-ID:                 BIR
+Station AIRS-ID:
+Station other IDs:              201(NILUDB)
+Station state/province:
+Measurement latitude:           58.380
+Measurement longitude:          8.250
+Measurement altitude:           220m
+Station land use:               Forest
+Station setting:                Rural
+Station GAW type:               R
+Station WMO region:             6
+Originator:                     Fiebig, Markus, Markus.Fiebig@nilu.no, Norwegian Institute for Air Research, NILU, Atmosphere and Climate Department, Instituttveien 18,, N-2027, Kjeller, Norway
+Originator:                     Someone, Else, Someone@somewhere.no, Some nice Institute, WOW, Super interesting division, Street 18,, X-9999, Paradise, Noway
+Submitter:                      Fiebig, Markus, Markus.Fiebig@nilu.no, Norwegian Institute for Air Research, NILU, Atmosphere and Climate Department, Instituttveien 18,, N-2027, Kjeller, Norway
+Data level:                     1
+Version:                        1
+Version description:            initial revision, Adis_EUSAAR_NRT_DMPS_lev0_2_lev1 v.0.0_4, Adis_EUSAAR_NRT_neph_lev1_2_lev2 v.0.0.5b
+Measurement height:             4m
+Inlet type:                     Impactor--direct
+Inlet description:              PM10 at ambient humidity inlet, Digitel, flow 140 l/min
+Humidity/temperature control:   Nafion dryer
+Humidity/temperature control description:sample dried to below 40% RH with nafion dryer operated with reduced pressure sheath air
+Volume std. temperature:        273.15K
+Volume std. pressure:           1013.25hPa
+Detection limit:                0 1/cm3
+Detection limit expl.:          Determined only by instrument counting statistics, no detection limit flag used
+Measurement uncertainty expl.:  uncertainty range between instruments in intercomparison by Wiedensohler et al. 2012.
+Zero/negative values code:      Zero possible
+Zero/negative values:           Zero values may appear due to statistical variations at very low concentrations
+Standard method:                SOP=Wiedensohler2012
+QA1 measure ID:                 WCCAP-MPSS-2015-2
+QA1 date:                       20151027
+QA1 document URL:               "http://www.actris-ecac.eu/files/ECAC-report-MPSS-2015-2-1_NOAA.pdf"
+Comment:                        None
+Acknowledgement:                Request acknowledgement details from data originator
+$column_header
+$data_section

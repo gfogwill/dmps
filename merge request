@@ -1,0 +1,24 @@
+## Makefile
+
+    
+## fetch_raw
+* Should be possible to fetch raw data from the instrument or a server. 
+* Final result: DMPS '.DAT' and '.LOG' files in 'raw_data_path'
+
+'''console
+make fetch_raw
+'''
+
+
+## unpack_data
+* Should be possible to unpack raw data from a file. 
+* Final result_
+  - DMPS '.DAT' and '.LOG' files in 'raw_data_path'
+  - '.inv' files in 'interim_data_path'
+
+'''console
+make unpack_data
+'''
+
+
+

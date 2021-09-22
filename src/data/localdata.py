@@ -7,13 +7,13 @@ import numpy as np
 from datetime import datetime, timedelta
 
 
-def read_interim_file(filename, has_flag=True, col_names=None, year=None, utc_time=True,
-                      resample_freq='10T'):
+def read_cle_file(filename, has_flag=True, col_names=None, year=None, utc_time=True,
+                      resample_freq='10T', keep_valid=True):
     """Read a DMPS inverted .cle file
-    
-    Data is multiple space-delimited. The file contains processed particle number size 
+
+    Data is multiple space-delimited. The file contains processed particle number size
     distributions with the original time resolution of the instrument.
-    
+
     Parameters
     ----------
     filename: path-like
@@ -21,14 +21,17 @@ def read_interim_file(filename, has_flag=True, col_names=None, year=None, utc_ti
     has_flag: boolean
         if true, last column is treated as a flag
     col_names: arry-like, optional
-        list of column names to use. Duplicates in this list are not allowed.
+        list of column names to use. Duplicates in this list are not allowed
     resample_freq: str
+        frequency to resample the data. Mean is used
+    keep_valid: bool
+        if true, return only data with flag 0 and replace the rest with nan's
 
     Returns
     -------
     data: DataFrame
     """
-    
+
     # Infere year from filename
     # year = int(filename.stem[2:6])
     if year is None:
@@ -59,10 +62,12 @@ def read_interim_file(filename, has_flag=True, col_names=None, year=None, utc_ti
 
     flags = df['flag']
 
-    df.loc[flags == 1] = np.nan
-    df.loc[flags == 2] = np.nan
-    df.loc[flags == 3] = np.nan
-    df.loc[flags == 4] = np.nan
+    if keep_valid:
+        df.loc[flags == 1] = np.nan
+        df.loc[flags == 2] = np.nan
+        df.loc[flags == 3] = np.nan
+        df.loc[flags == 4] = np.nan
+
     df.drop('flag', axis=1, inplace=True)
 
     df.columns = [float(i) * 1e9 for i in df.columns]

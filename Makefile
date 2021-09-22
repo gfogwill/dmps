@@ -51,6 +51,22 @@ datasets: .make.datasets
 	$(PYTHON_INTERPRETER) -m $(MODULE_NAME).workflow datasets
 	#touch .make.datasets
 
+fetch_raw:
+	$(PYTHON_INTERPRETER) -m src.data.make_dataset fetch
+
+unpack_raw:
+	$(PYTHON_INTERPRETER) -m src.data.make_dataset unpack
+
+process_raw:
+	$(PYTHON_INTERPRETER) -m src.data.make_dataset process
+
+## Apply Transformations to produce fully processed Datsets
+transform_data:
+	$(PYTHON_INTERPRETER) -m src.data.apply_transforms transformer_list.json
+
+manual_labeling:
+	$(PYTHON_INTERPRETER) -m src.data.make_labels
+
 .PHONY: clean
 ## Delete all compiled Python files
 clean:

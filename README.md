@@ -50,7 +50,7 @@ $ dmps info
 
 If everything is OK you should see the program logo.
 
-
+Hello!
 
 --------
 

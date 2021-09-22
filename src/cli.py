@@ -1,5 +1,5 @@
 from src import __version__ as version
-
+from src.data.labels import manual_labels
 import click
 
 LOGO = rf"""
@@ -24,8 +24,33 @@ def cli():
 
 @cli.command()
 def info():
-    """Get more information about kedro."""
+    """Get more information about dmps."""
     click.secho(LOGO, fg="green")
     click.echo(
         "\n"
     )
+
+
+@cli.command()
+@click.option('--input-filepath', type=click.Path(exists=True), default=None)
+@click.option('--output-filepath', type=click.Path(), default=None)
+@click.option('--year', type=int)
+@click.option('--dataset-name', type=str)
+def npf(input_filepath, output_filepath, year, dataset_name):
+    """Mannualy label new particle formation events of DMPS files
+
+        input_filepath: path
+        output_filepath: path
+    # """
+
+    if year is None:
+        year = click.prompt("Year to process?", type=int)
+
+    if dataset_name is None:
+        dataset_name = click.prompt("Dataset name?", type=str)
+
+    manual_labels(input_filepath=input_filepath,
+                  output_filepath=output_filepath,
+                  year=year,
+                  dataset_name=dataset_name)
+

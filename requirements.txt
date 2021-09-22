@@ -6,6 +6,7 @@ click~=8.0.1
 Sphinx
 coverage
 python-dotenv>=0.5.1
+pyyaml~=5.3.0
 
 matplotlib~=3.3.4
 numpy~=1.19.5

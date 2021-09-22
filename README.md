@@ -42,7 +42,7 @@ $ source venv/bin/activate
 ```
 
 
-## Running the tests
+## Testing the code
 
 ```console
 $ dmps info

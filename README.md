@@ -35,6 +35,12 @@ $ source venv/bin/activate
 $ make requirements
 ```
 
+Every time you start a new session you need to activate the virtual environment.
+
+```console
+$ source venv/bin/activate
+```
+
 
 ## Running the tests
 
@@ -43,13 +49,6 @@ $ dmps info
 ```
 
 If everything is OK you should see the program logo.
-
-### Sample Tests
-
-
-### Style test
-
-
 
 
 

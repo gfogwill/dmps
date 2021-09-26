@@ -1,6 +1,8 @@
 # local package
 -e .
 
+-f ebas_io-3.6.1-py3-none-any.whl
+
 # external requirements
 click~=8.0.1
 Sphinx

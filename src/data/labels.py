@@ -91,4 +91,5 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_
 
 
 if __name__ == '__main__':
-    manual_labels(year=2015)
+    manual_labels()
+

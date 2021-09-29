@@ -173,8 +173,8 @@ def normalize_labels(target):
     >>> all(np.vectorize(label_map.get)(mapped_target) == target)
     True
     """
-    label_map = {k:v for k, v in enumerate(np.unique(target))}
-    label_map_inv = {v:k for k, v in label_map.items()}
+    label_map = {k: v for k, v in enumerate(np.unique(target))}
+    label_map_inv = {v: k for k, v in label_map.items()}
     mapped_target = np.vectorize(label_map_inv.get)(target)
 
     return mapped_target, label_map

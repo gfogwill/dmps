@@ -11,7 +11,7 @@ from ..paths import raw_data_path
 
 
 def read_cle_file(filename, has_flag=True, col_names=None, year=None, utc_time=True,
-                      resample_freq='10T', keep_valid=True):
+                  resample_freq='10T', keep_valid=True):
     """Read a DMPS inverted .cle file
 
     Data is multiple space-delimited. The file contains processed particle number size
@@ -81,7 +81,7 @@ def read_cle_file(filename, has_flag=True, col_names=None, year=None, utc_time=T
     return df, flags
 
 
-def read_raw_dmps(fi):
+def read_raw_dmps(fi) -> pd.DataFrame:
     """ Reads raw data from directory ../data/raw and returns a pandas DataFrame
 
     """
@@ -94,21 +94,21 @@ def read_raw_dmps(fi):
 
     # Read odd rows (starting with first line)
     names_odd_rows = ['hour', 'minute', 'second',
-                      'temp', 'press', 'hum', 'NA', 'excess', 'sample',
+                      'AT', 'AP', 'RH', 'NA', 'excess_flow', 'sample_flow',
                       'voltage_1', 'voltage_2', 'voltage_3', 'voltage_4', 'voltage_5', 'voltage_6', 'voltage_7',
                       'voltage_8', 'voltage_9', 'voltage_10',
                       'voltage_11', 'voltage_12', 'voltage_13', 'voltage_14', 'voltage_15', 'voltage_16', 'voltage_17',
                       'voltage_18', 'voltage_19', 'voltage_20',
                       'voltage_21', 'voltage_22', 'voltage_23', 'voltage_24', 'voltage_25']
 
-    data0 = pd.read_csv(fi, sep='\t', skiprows=lambda x: x % 2 == 1, names=names_odd_rows)
-    data0['year'] = year
-    data0['month'] = month
-    data0['day'] = day
-    data0.index = pd.to_datetime(data0[['year', 'month', 'day', 'hour', 'minute', 'second']])
+    data_even_rows = pd.read_csv(fi, sep='\t', skiprows=lambda x: x % 2 == 1, names=names_odd_rows)
+    data_even_rows['year'] = year
+    data_even_rows['month'] = month
+    data_even_rows['day'] = day
+    data_even_rows.index = pd.to_datetime(data_even_rows[['year', 'month', 'day', 'hour', 'minute', 'second']])
 
     names_even_rows = ['hour', 'minute', 'second',
-                       'temp', 'press', 'hum', 'NA', 'excess', 'sample',
+                       'AT', 'AP', 'RH', 'NA', 'excess_flow', 'sample_flow',
                        'concentration_1', 'concentration_2', 'concentration_3', 'concentration_4', 'concentration_5',
                        'concentration_6', 'concentration_7', 'concentration_8', 'concentration_9', 'concentration_10',
                        'concentration_11', 'concentration_12', 'concentration_13', 'concentration_14',
@@ -117,13 +117,13 @@ def read_raw_dmps(fi):
                        'concentration_21', 'concentration_22', 'concentration_23', 'concentration_24',
                        'concentration_25']
 
-    data1 = pd.read_csv(fi, sep='\t', skiprows=lambda x: x % 2 == 0, names=names_even_rows)
-    data1['year'] = year
-    data1['month'] = month
-    data1['day'] = day
-    data1.index = pd.to_datetime(data1[['year', 'month', 'day', 'hour', 'minute', 'second']])
+    data_odd_rows = pd.read_csv(fi, sep='\t', skiprows=lambda x: x % 2 == 0, names=names_even_rows)
+    data_odd_rows['year'] = year
+    data_odd_rows['month'] = month
+    data_odd_rows['day'] = day
+    data_odd_rows.index = pd.to_datetime(data_odd_rows[['year', 'month', 'day', 'hour', 'minute', 'second']])
 
-    data = pd.concat([data0, data1], axis=1)
+    data = pd.concat([data_even_rows, data_odd_rows], axis=1)
     data = data.drop(['year', 'month', 'day', 'hour', 'minute', 'second'], axis=1)
     data = data.loc[:, ~data.columns.duplicated()]
 

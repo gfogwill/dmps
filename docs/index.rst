@@ -14,7 +14,8 @@ Contents:
    getting-started
    commands
    data
-
+   raw_data
+   ebas-io
 
 Indices and tables
 ==================

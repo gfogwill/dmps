@@ -1,5 +1,7 @@
-from src import __version__ as version
-from src.data.labels import manual_labels
+from src import __version__
+
+from data.labels import manual_labels
+
 import click
 
 LOGO = rf"""
@@ -9,12 +11,12 @@ ______ ___  _________  _____
 | | | || |\/| ||  __/  `--. \
 | |/ / | |  | || |    /\__/ /
 |___/  \_|  |_/\_|    \____/ 
-                            v{version}
+                            v{__version__}
 """
 
 
 @click.group(context_settings=dict(help_option_names=["-h", "--help"]), name="DMPS")
-@click.version_option(version, "--version", "-V", help="Show version and exit")
+@click.version_option(__version__, "--version", "-V", help="Show version and exit")
 def cli():  
     """dmps is a CLI for working with DMPS observations data. For more
     information, type ``dmps info``.
@@ -44,10 +46,10 @@ def npf(input_filepath, output_filepath, year, dataset_name):
     # """
 
     if year is None:
-        year = click.prompt("Year to process?", type=int)
+        year = click.prompt("Year to process?")
 
     if dataset_name is None:
-        dataset_name = click.prompt("Dataset name?", type=str)
+        dataset_name = click.prompt("Dataset name?")
 
     manual_labels(input_filepath=input_filepath,
                   output_filepath=output_filepath,

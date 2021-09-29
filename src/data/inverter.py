@@ -1,7 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-from .localdata import read_raw_dmps
 
 import scipy.integrate as integrate
 from scipy.special import erf
@@ -68,6 +66,7 @@ def invert(raw_data):
     p = np.linspace(1, plkm, plkm) * dma_values['polarity']
 
     tee = np.zeros((voltages.__len__(), dp_peak.__len__()))
+
     # Integrate hetransfer functions(check: Stohlzenburg 1988)
     for ii in range(0, voltages.__len__()):
         for jj in range(0, dp_peak.__len__()):

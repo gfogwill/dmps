@@ -1,14 +1,15 @@
 import pathlib
-
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from src.data.localdata import read_cle_file
-from datetime import timedelta
+
+import matplotlib.pyplot as plt
+
+from .localdata import read_cle_file
+
 import matplotlib.dates as mdates
-import matplotlib
-from src.utils import clean_dir
-from src.paths import processed_data_path, external_data_path, interim_data_path
+
+from ..utils import clean_dir
+from ..paths import processed_data_path, interim_data_path
 
 
 plt.close('all')
@@ -44,9 +45,6 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_
                                     year=year,
                                     utc_time=False)
 
-    # for idx, day in data.groupby(pd.Grouper(freq='1d', origin='start')):
-    # for file in input_filepath.glob('*.cle'):
-    # for idx, day in data.groupby(data.index.date):
     for idx, day in data.groupby(pd.Grouper(freq='1d')):
         plt.cla()
 

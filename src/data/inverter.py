@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from .localdata import read_raw_dmps
 
 import scipy.integrate as integrate
 from scipy.special import erf
@@ -11,56 +12,6 @@ import logging
 e = 1.602E-19
 eo = 8.854e-12
 boltz = 1.381e-23
-
-
-def read_raw_dmps(fi):
-    """ Reads raw data from directory ../data/raw and returns a pandas DataFrame
-
-    """
-    raw_data_path = '../../data/raw/dmps/raw/'
-
-    logging.info('File name: ' + fi)
-
-    year = fi[2:6]
-    month = fi[6:8]
-    day = fi[8:10]
-
-    # Read odd rows (starting with first line)
-    names_odd_rows = ['hour', 'minute', 'second',
-                      'temp', 'press', 'hum', 'NA', 'excess', 'sample',
-                      'voltage_1', 'voltage_2', 'voltage_3', 'voltage_4', 'voltage_5', 'voltage_6', 'voltage_7',
-                      'voltage_8', 'voltage_9', 'voltage_10',
-                      'voltage_11', 'voltage_12', 'voltage_13', 'voltage_14', 'voltage_15', 'voltage_16', 'voltage_17',
-                      'voltage_18', 'voltage_19', 'voltage_20',
-                      'voltage_21', 'voltage_22', 'voltage_23', 'voltage_24', 'voltage_25']
-
-    data0 = pd.read_csv(raw_data_path + fi, sep='\t', skiprows=lambda x: x % 2 == 1, names=names_odd_rows)
-    data0['year'] = year
-    data0['month'] = month
-    data0['day'] = day
-    data0.index = pd.to_datetime(data0[['year', 'month', 'day', 'hour', 'minute', 'second']])
-
-    names_even_rows = ['hour', 'minute', 'second',
-                       'temp', 'press', 'hum', 'NA', 'excess', 'sample',
-                       'concentration_1', 'concentration_2', 'concentration_3', 'concentration_4', 'concentration_5',
-                       'concentration_6', 'concentration_7', 'concentration_8', 'concentration_9', 'concentration_10',
-                       'concentration_11', 'concentration_12', 'concentration_13', 'concentration_14',
-                       'concentration_15', 'concentration_16', 'concentration_17', 'concentration_18',
-                       'concentration_19', 'concentration_20',
-                       'concentration_21', 'concentration_22', 'concentration_23', 'concentration_24',
-                       'concentration_25']
-
-    data1 = pd.read_csv(raw_data_path + fi, sep='\t', skiprows=lambda x: x % 2 == 0, names=names_even_rows)
-    data1['year'] = year
-    data1['month'] = month
-    data1['day'] = day
-    data1.index = pd.to_datetime(data1[['year', 'month', 'day', 'hour', 'minute', 'second']])
-
-    data = pd.concat([data0, data1], axis=1)
-    data = data.drop(['year', 'month', 'day', 'hour', 'minute', 'second'], axis=1)
-    data = data.loc[:, ~data.columns.duplicated()]
-
-    return data
 
 
 def invert(raw_data):
@@ -523,23 +474,3 @@ def get_dma_const():
                      dmamodel1='HAUM', cpcmodel1='3010', qc1=5.0 / 1000 / 60, qm1=5.0 / 1000 / 60, qa1=1.0 / 1000 / 60,
                      qs1=1.0 / 1000 / 60)
     return dma_const
-
-
-if __name__ == '__main__':
-    data = read_raw_dmps('DM20170123.DAT')
-    inv_data, par_conc, tot_conc, dp_peak = invert(data)
-    plt.pcolor(inv_data.index, dp_peak, np.log10(abs(par_conc)+1e-6), cmap='jet')
-    plt.clim([0, 4])
-
-    if dp_peak[0] * .9 > 1e-8:
-        # plt.xlim([np.fix(V(1)) - 0.05, np.fix(V(1)) + 1.05])
-        plt.ylim([1e-8, dp_peak[-1] * 1.1])
-    else:
-        # plt.xlim([np.fix(V(1)) - 0.05, np.fix(V(1)) + 1.05])
-        # plt.ylim((dp_peak[0] * .9, dp_peak[-1] * 1.1))
-        plt.axis(ymin=dp_peak[0]*0.9, ymax=dp_peak[-1]*1.1)
-
-    plt.yscale('log')
-    plt.show()
-    plt.plot(inv_data.index, tot_conc)
-    plt.show()

@@ -21,7 +21,7 @@ Requirements for the software and other tools to build, test and push
 Clone the repository
 
 ```console
-$ git clone https://gitlab.smn.gov.ar/gfogwill/dmps
+$ git clone https://github.com/gfogwill/dmps
 $ cd dmps
 ```
 

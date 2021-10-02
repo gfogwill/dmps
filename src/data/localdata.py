@@ -33,6 +33,7 @@ def read_cle_file(filename, has_flag=True, col_names=None, year=None, utc_time=T
     Returns
     -------
     data: DataFrame
+
     """
 
     # Infere year from filename

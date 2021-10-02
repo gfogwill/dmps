@@ -52,7 +52,7 @@ def npf(input_filepath, output_filepath, year, dataset_name):
         dataset_name = click.prompt("Dataset name?")
 
     src.data.labels.manual_labels(input_filepath=input_filepath,
-                              output_filepath=output_filepath,
-                              year=year,
-                              dataset_name=dataset_name)
+                                  output_filepath=output_filepath,
+                                  year=year,
+                                  dataset_name=dataset_name)
 

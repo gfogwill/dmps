@@ -21,7 +21,8 @@ mngr.window.setGeometry = (50, 100, 640, 545)
 plt.show(block=False)
 
 
-def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_name=None, save_X_y=True):
+def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_name=None, save_X_y=True,
+                  analysis_freq='1d'):
     """Manually label NPF events
 
     """
@@ -45,7 +46,7 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_
                                     year=year,
                                     utc_time=False)
 
-    for idx, day in data.groupby(pd.Grouper(freq='1d')):
+    for idx, day in data.groupby(pd.Grouper(freq=analysis_freq)):
         plt.cla()
 
         plt.pcolor(day.index,

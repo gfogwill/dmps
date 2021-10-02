@@ -1,6 +1,6 @@
 from src import __version__
 
-from data.labels import manual_labels
+import src.data.labels
 
 import click
 
@@ -51,8 +51,8 @@ def npf(input_filepath, output_filepath, year, dataset_name):
     if dataset_name is None:
         dataset_name = click.prompt("Dataset name?")
 
-    manual_labels(input_filepath=input_filepath,
-                  output_filepath=output_filepath,
-                  year=year,
-                  dataset_name=dataset_name)
+    src.data.labels.manual_labels(input_filepath=input_filepath,
+                              output_filepath=output_filepath,
+                              year=year,
+                              dataset_name=dataset_name)
 

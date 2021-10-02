@@ -23,7 +23,8 @@ __all__ = [
     'reservoir_sample',
     'serialize_partial',
     'load_json',
-    'save_json'
+    'save_json',
+    'clean_dir'
 ]
 
 _MODULE = sys.modules[__name__]

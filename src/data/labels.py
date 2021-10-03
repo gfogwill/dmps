@@ -9,7 +9,7 @@ from .localdata import read_cle_file
 import matplotlib.dates as mdates
 
 from ..utils import clean_dir
-from ..paths import processed_data_path, interim_data_path
+from ..paths import processed_data_path, external_data_path
 
 
 plt.close('all')
@@ -26,13 +26,14 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_
     """Manually label NPF events
 
     """
+
     if year is None:
         raise Exception('Year is needed!')
     else:
         year = str(year)
 
     if input_filepath is None:
-        input_filepath = pathlib.Path(interim_data_path)
+        input_filepath = pathlib.Path(external_data_path)
     else:
         input_filepath = pathlib.Path(input_filepath)
 

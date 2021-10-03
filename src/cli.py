@@ -1,3 +1,5 @@
+import pandas
+
 from src import __version__
 
 import src.data.labels
@@ -38,7 +40,8 @@ def info():
 @click.option('--output-filepath', type=click.Path(), default=None)
 @click.option('--year', type=int)
 @click.option('--dataset-name', type=str)
-def npf(input_filepath, output_filepath, year, dataset_name):
+@click.option('--analysis-freq', type=str)
+def npf(input_filepath, output_filepath, year, dataset_name, analysis_freq):
     """Mannualy label new particle formation events of DMPS files
 
         input_filepath: path
@@ -54,5 +57,6 @@ def npf(input_filepath, output_filepath, year, dataset_name):
     src.data.labels.manual_labels(input_filepath=input_filepath,
                                   output_filepath=output_filepath,
                                   year=year,
-                                  dataset_name=dataset_name)
+                                  dataset_name=dataset_name,
+                                  analysis_freq=analysis_freq)
 

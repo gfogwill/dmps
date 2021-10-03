@@ -39,12 +39,12 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_
     if output_filepath is None:
         output_filepath = processed_data_path / f'events-{year}.csv'
 
-    clean_dir(processed_data_path / year)
+    # clean_dir(processed_data_path / year)
 
-    data, flags = read_cle_file(input_filepath / dataset_name / f'DMPSmbiocle{year}.dat',
-                                    has_flag=True,
-                                    year=year,
-                                    utc_time=False)
+    data = read_cle_file(input_filepath / dataset_name / f'DMPSmbiocle{year}.dat',
+                         has_flag=True,
+                         year=year,
+                         utc_time=False)
 
     for idx, day in data.groupby(pd.Grouper(freq=analysis_freq)):
         plt.cla()

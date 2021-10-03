@@ -64,22 +64,23 @@ def read_cle_file(filename, has_flag=True, col_names=None, year=None, utc_time=T
 
     df.drop('tot_conc', axis=1, inplace=True)
 
-    flags = df['flag']
+    # flags = df['flag']
 
-    if keep_valid:
-        df.loc[flags == 1] = np.nan
-        df.loc[flags == 2] = np.nan
-        df.loc[flags == 3] = np.nan
-        df.loc[flags == 4] = np.nan
+    # if keep_valid:
+    #     df.loc[flags == 1] = np.nan
+    #     df.loc[flags == 2] = np.nan
+    #     df.loc[flags == 3] = np.nan
+    #     df.loc[flags == 4] = np.nan
 
-    df.drop('flag', axis=1, inplace=True)
+    # df.drop('flag', axis=1, inplace=True)
 
     df.columns = [float(i) * 1e9 for i in df.columns]
 
     if not utc_time:
         df.index = df.index - timedelta(hours=3)
         # df.index = df.index.tz_localize(tz='UTC').tz_convert(tz='America/Argentina/Buenos_Aires')
-    return df, flags
+
+    return df  # , flags
 
 
 def read_raw_dmps(fi) -> pd.DataFrame:

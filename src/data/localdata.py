@@ -110,7 +110,7 @@ def read_raw_dmps(fi) -> pd.DataFrame:
     data_even_rows.index = pd.to_datetime(data_even_rows[['year', 'month', 'day', 'hour', 'minute', 'second']])
 
     names_even_rows = ['hour', 'minute', 'second',
-                       'AT', 'AP', 'RH', 'NA', 'excess_flow', 'sample_flow',
+                       'temp', 'press', 'hum', 'NA', 'excess', 'sample',
                        'concentration_1', 'concentration_2', 'concentration_3', 'concentration_4', 'concentration_5',
                        'concentration_6', 'concentration_7', 'concentration_8', 'concentration_9', 'concentration_10',
                        'concentration_11', 'concentration_12', 'concentration_13', 'concentration_14',

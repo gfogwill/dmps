@@ -40,7 +40,7 @@ def info():
 @click.option('--output-filepath', type=click.Path(), default=None)
 @click.option('--year', type=int)
 @click.option('--dataset-name', type=str)
-@click.option('--analysis-freq', type=str)
+@click.option('--analysis-freq', type=str, default='1d')
 def npf(input_filepath, output_filepath, year, dataset_name, analysis_freq):
     """Mannualy label new particle formation events of DMPS files
 
@@ -60,3 +60,6 @@ def npf(input_filepath, output_filepath, year, dataset_name, analysis_freq):
                                   dataset_name=dataset_name,
                                   analysis_freq=analysis_freq)
 
+
+if __name__ == '__main__':
+    cli()

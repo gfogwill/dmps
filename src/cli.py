@@ -1,5 +1,7 @@
 import pandas
 
+from datetime import date
+
 from src import __version__
 
 import src.data.labels
@@ -38,25 +40,19 @@ def info():
 @cli.command()
 @click.option('--input-filepath', type=click.Path(exists=True), default=None)
 @click.option('--output-filepath', type=click.Path(), default=None)
-@click.option('--year', type=int)
-@click.option('--dataset-name', type=str)
+@click.option('--start-date', type=click.DateTime(formats=["%Y-%m-%d"]), default=str(date.today()))
+@click.option('--end-date', type=click.DateTime(formats=["%Y-%m-%d"]), default=str(date.today()))
+@click.option('--dataset-name', type=str, default='mbi-ea')
 @click.option('--analysis-freq', type=str, default='1d')
-def npf(input_filepath, output_filepath, year, dataset_name, analysis_freq):
+def npf(input_filepath, output_filepath, start_date, end_date, dataset_name, analysis_freq):
     """Mannualy label new particle formation events of DMPS files
 
         input_filepath: path
         output_filepath: path
     # """
 
-    if year is None:
-        year = click.prompt("Year to process?")
-
-    if dataset_name is None:
-        dataset_name = click.prompt("Dataset name?")
-
     src.data.labels.manual_labels(input_filepath=input_filepath,
                                   output_filepath=output_filepath,
-                                  year=year,
                                   dataset_name=dataset_name,
                                   analysis_freq=analysis_freq)
 

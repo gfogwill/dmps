@@ -21,16 +21,16 @@ mngr.window.setGeometry = (50, 100, 640, 545)
 plt.show(block=False)
 
 
-def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_name=None, save_X_y=True,
+def manual_labels(input_filepath=None, output_filepath=None, dataset_name=None, save_X_y=True,
                   analysis_freq='1d'):
     """Manually label NPF events
 
     """
 
-    if year is None:
-        raise Exception('Year is needed!')
-    else:
-        year = str(year)
+    # if year is None:
+    #     raise Exception('Year is needed!')
+    # else:
+    #     year = str(year)
 
     if input_filepath is None:
         input_filepath = pathlib.Path(external_data_path)

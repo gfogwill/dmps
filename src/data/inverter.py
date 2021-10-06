@@ -54,7 +54,7 @@ def invert(raw_data):
     ldp = np.log10(dp_peak)
 
     # Final grid
-    inv_data = raw_data
+    inv_data = raw_data.copy()
 
     # Calculate channel borders
     dp_limits = np.mean([np.append(np.nan, ldp.values), np.append(ldp.values, np.nan)], axis=0)

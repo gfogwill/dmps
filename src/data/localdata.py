@@ -104,8 +104,9 @@ def read_raw_dmps(date) -> pd.DataFrame:
                       'voltage_11', 'voltage_12', 'voltage_13', 'voltage_14', 'voltage_15', 'voltage_16', 'voltage_17',
                       'voltage_18', 'voltage_19', 'voltage_20',
                       'voltage_21', 'voltage_22', 'voltage_23', 'voltage_24', 'voltage_25']
-
+    
     data_even_rows = pd.read_csv(fi, sep='\t', skiprows=lambda x: x % 2 == 1, names=names_odd_rows)
+
     data_even_rows['year'] = year
     data_even_rows['month'] = month
     data_even_rows['day'] = day

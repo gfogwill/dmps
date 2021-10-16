@@ -83,16 +83,18 @@ def read_cle_file(filename, has_flag=True, col_names=None, year=None, utc_time=T
     return df, flags
 
 
-def read_raw_dmps(fi) -> pd.DataFrame:
+def read_raw_dmps(date) -> pd.DataFrame:
     """ Reads raw data from directory ../data/raw and returns a pandas DataFrame
 
     """
+    
+    fi = raw_data_path / date.strftime(format="DM%Y%m%d.DAT")
 
     logging.info('File name: ' / fi)
 
-    year = fi.stem[2:6]
-    month = fi.stem[6:8]
-    day = fi.stem[8:10]
+    year = date.year  # fi.stem[2:6]
+    month = date.month  # fi.stem[6:8]
+    day = date.day  # fi.stem[8:10]
 
     # Read odd rows (starting with first line)
     names_odd_rows = ['hour', 'minute', 'second',

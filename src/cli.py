@@ -1,12 +1,20 @@
-import pandas
-
-from datetime import date
-
 from src import __version__
+
+from src.data.localdata import read_raw_dmps
+from src.data.inverter import invert
 
 import src.data.labels
 
 import click
+import logging
+
+import datetime
+from datetime import date
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
 
 LOGO = rf"""
 ______ ___  _________  _____ 
@@ -57,5 +65,50 @@ def npf(input_filepath, output_filepath, start_date, end_date, dataset_name, ana
                                   analysis_freq=analysis_freq)
 
 
+@cli.command()
+@click.option('--start-date', type=click.DateTime(formats=["%Y-%m-%d"]), default=str(date.today()))
+@click.option('--end-date', type=click.DateTime(formats=["%Y-%m-%d"]), default=None)
+@click.option('--output-filepath', type=click.Path(), default=None)
+def plot(start_date, end_date, output_filepath):
+    """Plot DMPS inverted data
+
+        start-date: datetime
+        end-date: datetime
+    # """
+    data = []
+    
+    if end_date is None:
+        data = read_raw_dmps(start_date)
+    
+    else:
+        datelist = pd.date_range(start=start_date,end=end_date).to_pydatetime().tolist()
+
+        for date in datelist:
+            try:
+                df = read_raw_dmps(date)
+                
+            except FileNotFoundError:
+                logging.warning(f"File not found for date: {date}")
+                continue
+        
+            data.append(df)    
+            
+        data = pd.concat(data, axis=0)
+
+    inv_data = invert(data)
+    
+    plt.pcolor(inv_data.index, inv_data.columns, np.log10(abs(inv_data.values[::1,::1].T)+1e-6), cmap='jet')
+
+    plt.clim(0,4)
+    plt.yscale('log')
+    
+    if output_filepath is None:
+        plt.show()
+    else:
+        plt.savefig(output_filepath)
+
+    
+    
+    
 if __name__ == '__main__':
     cli()

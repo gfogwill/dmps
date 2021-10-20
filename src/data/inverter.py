@@ -70,13 +70,21 @@ def invert(raw_data):
     # Integrate hetransfer functions(check: Stohlzenburg 1988)
     for ii in range(0, voltages.__len__()):
         for jj in range(0, dp_peak.__len__()):
-            tee[ii, jj] = integrate.quadrature(intfun, np.log10(dp_limits[jj]), np.log10(dp_limits[jj + 1]),
-                                               args=(t, pr, p, voltages[ii],
-                                               dma_values['pituus1'], dma_values['arkaksi1'], dma_values['aryksi1'],
-                                               dma_values['qa1'], dma_values['qc1'], dma_values['qm1'],
-                                               dma_values['qs1'],
-                                               dma_values['cpcmodel1'], dma_values['dmamodel1'],
-                                               dma_values['pipelength'], dma_values['pipeflow']),
+            tee[ii, jj] = integrate.quadrature(intfun, 
+                                               np.log10(dp_limits[jj]), 
+                                               np.log10(dp_limits[jj + 1]),
+                                               args=(t, pr, p, voltages[ii], 
+                                                     dma_values['pituus1'], 
+                                                     dma_values['arkaksi1'], 
+                                                     dma_values['aryksi1'],
+                                                     dma_values['qa1'], 
+                                                     dma_values['qc1'], 
+                                                     dma_values['qm1'],
+                                                     dma_values['qs1'],
+                                                     dma_values['cpcmodel1'], 
+                                                     dma_values['dmamodel1'],
+                                                     dma_values['pipelength'], 
+                                                     dma_values['pipeflow']),
                                                miniter=15, maxiter=200)[0] \
                           / (np.log10(dp_limits[jj + 1]) - np.log10(dp_limits[jj]))
 
@@ -125,8 +133,9 @@ def invert(raw_data):
     #     result(2: mk + 1, 2)=totconc
     #     ';
     #     result(1, 3: nk + 2)=parkoko(:, 1)';
-
-    return inv_data, kokoja, totconc, dp_peak
+    return pd.DataFrame(index=inv_data.index, data=kokoja.transpose(), columns=dp_peak)
+    
+    #return kokoja, totconc, dp_peak
 
 
 def intfun(dp, t, press, p, volt, pituus, arkaksi, aryksi, qa, qc, qm, qs, cpcmodel, dmamodel, pipelength, pipeflow):
@@ -468,8 +477,21 @@ def get_dma_const():
     # This is used after 11.3.2003 at Utö
 
     # Change the system information here
-    dma_const = dict(tem=295.15, press=1.00e5, rh=999.99, dmalkm=1, volt1lkm=25, polarity=-1, pipelength=2.0,
-                     pipeflow=1 / 1000 / 60, pipediameter=4 / 1000, pituus1=0.28, arkaksi1=3.3e-2, aryksi1=2.5E-2,
-                     dmamodel1='HAUM', cpcmodel1='3010', qc1=5.0 / 1000 / 60, qm1=5.0 / 1000 / 60, qa1=1.0 / 1000 / 60,
+    dma_const = dict(tem=295.15, 
+                     press=1.00e5, 
+                     rh=999.99, dmalkm=1, 
+                     volt1lkm=25, 
+                     polarity=-1, 
+                     pipelength=2.0,
+                     pipeflow=1 / 1000 / 60, 
+                     pipediameter=4 / 1000, 
+                     pituus1=0.28, 
+                     arkaksi1=3.3e-2, 
+                     aryksi1=2.5E-2,
+                     dmamodel1='HAUM', 
+                     cpcmodel1='3010', 
+                     qc1=5.0 / 1000 / 60, 
+                     qm1=5.0 / 1000 / 60, 
+                     qa1=1.0 / 1000 / 60,
                      qs1=1.0 / 1000 / 60)
     return dma_const

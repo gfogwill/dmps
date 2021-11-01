@@ -45,7 +45,7 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_
     data, flag = read_cle_file(input_filepath / dataset_name / f'DMPSmbiocle{year}.dat',
                                has_flag=True,
                                year=year,
-                                utc_time=False)
+                               utc_time=False)
 
     for idx, day in data.groupby(pd.Grouper(freq=analysis_freq)):
         plt.cla()

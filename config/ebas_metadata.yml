@@ -1,0 +1,192 @@
+!!python/object/new:nilutility.datatypes.DataObject
+dictitems:
+  abs_cross_section: null
+  acknowledgements: Request acknowledgment details from data originator
+  ana_instr_manufacturer: null
+  ana_instr_model: null
+  ana_instr_name: null
+  ana_instr_serialno: null
+  ana_lab_code: null
+  ana_technique: null
+  artifact_corr: null
+  artifact_corr_desc: null
+  blank_corr: null
+  cal_scale: null
+  cal_std_id: null
+  characteristics: null
+  charge_type: null
+  charring_corr: null
+  coating_solution: null
+  coincidence_corr: null
+  comment: none
+  comp_name: particle_number_size_distribution
+  comp_param_kmax: null
+  comp_param_kmin: null
+  comp_thresh_atten1: null
+  comp_thresh_atten2: null
+  converter_temp: null
+  cpc_default_pulse_width: null
+  creation_time: null
+  datadef: null
+  datalevel: '1'
+  detection_limit: !!python/tuple
+  - 0
+  - 1/cm3
+  detection_limit_desc: ' Determined only by instrument counting statistics, no detection
+    limit flag used'
+  duration: 5mn
+  export_filter: null
+  export_state: null
+  ext_lab: null
+  filename: null
+  filter_area: null
+  filter_conditioning: null
+  filter_descr: null
+  filter_face_velocity: null
+  filter_prefiring: null
+  filter_type: null
+  flow_rate: null
+  hum_temp_ctrl: Nafion dryer
+  hum_temp_ctrl_desc: 'Humidity/temperature control description: sample dried to below
+    40% RH with nafion dryer'
+  inlet_desc: PM10 impactor
+  inlet_diffusion_loss_data: null
+  inlet_tube_innerD: null
+  inlet_tube_length: null
+  inlet_tube_material: null
+  inlet_tube_outerD: null
+  inlet_type: Impactor direct
+  instr_manufacturer: TROPOS-TSI
+  instr_model: TROPOS-SMPS
+  instr_name: SMPS-TROPOS
+  instr_serialno: SMPS=TROPOS
+  instr_type: smps
+  lab_code: GR05L
+  leakage_factor_zeta: null
+  maintenance_desc: null
+  mass_abs_cross_section: null
+  matrix: pm10
+  max_attenuation: null
+  mea_altitude: 2340.0
+  mea_height: 6
+  mea_latitude: 37.984265
+  mea_longitude: null
+  mea_longitute: 22.196262
+  medium: null
+  method: GR05L__NRT_SMPS_lev1
+  multi_scattering_corr_fact: null
+  org: !!python/object/new:nilutility.datatypes.DataObject
+    dictitems:
+      OR_ACRONYM: DEM
+      OR_ADDR_CITY: Athens
+      OR_ADDR_COUNTRY: Greece
+      OR_ADDR_LINE1: Ag.Paraskevi
+      OR_ADDR_LINE2: null
+      OR_ADDR_ZIP: '15310'
+      OR_CODE: GR05L
+      OR_NAME: NCSR Demokritos
+      OR_UNIT: URL
+  originator:
+  - !!python/object/new:nilutility.datatypes.DataObject
+    dictitems:
+      PS_ADDR_CITY: Athens
+      PS_ADDR_COUNTRY: Greece
+      PS_ADDR_LINE1: Ag.Paraskevi
+      PS_ADDR_LINE2: null
+      PS_ADDR_ZIP: '15310'
+      PS_EMAIL: elefther@ipta.demokritos.gr
+      PS_FIRST_NAME: Konstantinos
+      PS_LAST_NAME: Eleftheriadis
+      PS_ORCID: null
+      PS_ORG_ACR: DEM
+      PS_ORG_NAME: NCSR Demokritos
+      PS_ORG_UNIT: ERL
+  - !!python/object/new:nilutility.datatypes.DataObject
+    dictitems:
+      PS_ADDR_CITY: Athens
+      PS_ADDR_COUNTRY: Greece
+      PS_ADDR_LINE1: Ag.Paraskevi
+      PS_ADDR_LINE2: null
+      PS_ADDR_ZIP: '15310'
+      PS_EMAIL: vratolis@ipta.demokritos.gr
+      PS_FIRST_NAME: Stergios
+      PS_LAST_NAME: Vratolis
+      PS_ORCID: null
+      PS_ORG_ACR: DEM
+      PS_ORG_NAME: NCSR Demokritos
+      PS_ORG_UNIT: ERL
+  ozone_corr: null
+  period: 1y
+  platform_code: GR0101S
+  project_contact_emails: []
+  project_cotact_names: []
+  project_descs: []
+  project_names: []
+  projects:
+  - GAW-WDCA
+  - ACTRIS
+  qa: null
+  reference_date: null
+  regime: null
+  rescode_sample: 5mn
+  resolution: 5mn
+  revdate: 2017-07-20 13:23:00
+  revdesc: initial revision, NRT SMPS_control_lev0 lev0 2 lev1 v.0.0_2
+  revision: 1.1a
+  sample_prep: null
+  sec_std_id: null
+  sensor_type: null
+  setkey: null
+  startdate: 2016-01-01 00:00:00
+  station_airs_id: ''
+  station_altitude: 2340.0
+  station_code: GR0101R
+  station_gaw_id: HAC
+  station_gaw_name: Helmos Mountain
+  station_gaw_type: R
+  station_landuse: gravel and Stone
+  station_latitude: 37.984265
+  station_longitude: 22.196262
+  station_name: Helmos Mountain
+  station_other_ids: ''
+  station_setting: Mountain
+  station_state_code: ''
+  station_wdca_id: GAWAGR__HAC
+  station_wmo_region: 6
+  statistics: null
+  std_method: null
+  submitter:
+  - !!python/object/new:nilutility.datatypes.DataObject
+    dictitems:
+      PS_ADDR_CITY: Athens
+      PS_ADDR_COUNTRY: Greece
+      PS_ADDR_LINE1: Ag.Paraskevi
+      PS_ADDR_LINE2: null
+      PS_ADDR_ZIP: '15310'
+      PS_EMAIL: gini@ipta.demokritos.gr
+      PS_FIRST_NAME: Maria
+      PS_LAST_NAME: Gini
+      PS_ORCID: null
+      PS_ORG_ACR: DEM
+      PS_ORG_NAME: NCSR Demokritos
+      PS_ORG_UNIT: ERL
+  time_converter_or_bypass_line: null
+  time_inlet_to_converter: null
+  time_stay_converter: null
+  timeref: null
+  timezone: UTC
+  title: null
+  type: TU
+  uncertainty: null
+  uncertainty_desc: uncertainty range between instruments in intercomparison by Wiedensohler
+    et al. 2012. (AMT)
+  unit: 1/cm3
+  upper_range_limit: null
+  vol_std_pressure: 1013.25
+  vol_std_temp: 273.15
+  watervapor_corr: null
+  zero_negative: Zero values possible
+  zero_negative_desc: Zero values may appear due to statistical variations at very
+    low concentrations
+  zero_span_interval: null
+  zero_span_type: null

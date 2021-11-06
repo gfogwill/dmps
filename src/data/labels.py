@@ -1,14 +1,15 @@
 import pathlib
-
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from src.data.localdata import read_cle_file
-from datetime import timedelta
+
+import matplotlib.pyplot as plt
+
+from .localdata import read_cle_file
+
 import matplotlib.dates as mdates
-import matplotlib
-from src.utils import clean_dir
-from src.paths import processed_data_path, external_data_path, interim_data_path
+
+from ..utils import clean_dir
+from ..paths import processed_data_path, external_data_path
 
 
 plt.close('all')
@@ -20,34 +21,33 @@ mngr.window.setGeometry = (50, 100, 640, 545)
 plt.show(block=False)
 
 
-def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_name=None, save_X_y=True):
+def manual_labels(input_filepath=None, output_filepath=None, dataset_name=None, save_X_y=True,
+                  analysis_freq='1d'):
     """Manually label NPF events
 
     """
-    if year is None:
-        raise Exception('Year is needed!')
-    else:
-        year = str(year)
+
+    # if year is None:
+    #     raise Exception('Year is needed!')
+    # else:
+    #     year = str(year)
 
     if input_filepath is None:
-        input_filepath = pathlib.Path(interim_data_path)
+        input_filepath = pathlib.Path(external_data_path)
     else:
         input_filepath = pathlib.Path(input_filepath)
 
     if output_filepath is None:
         output_filepath = processed_data_path / f'events-{year}.csv'
 
-    clean_dir(processed_data_path / year)
+    # clean_dir(processed_data_path / year)
 
-    data, flags = read_cle_file(input_filepath / dataset_name / f'DMPSmbiocle{year}.dat',
-                                    has_flag=True,
-                                    year=year,
-                                    utc_time=False)
+    data, flag = read_cle_file(input_filepath / dataset_name / f'DMPSmbiocle{year}.dat',
+                               has_flag=True,
+                               year=year,
+                               utc_time=False)
 
-    # for idx, day in data.groupby(pd.Grouper(freq='1d', origin='start')):
-    # for file in input_filepath.glob('*.cle'):
-    # for idx, day in data.groupby(data.index.date):
-    for idx, day in data.groupby(pd.Grouper(freq='1d')):
+    for idx, day in data.groupby(pd.Grouper(freq=analysis_freq)):
         plt.cla()
 
         plt.pcolor(day.index,

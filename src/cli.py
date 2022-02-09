@@ -8,7 +8,6 @@ import src.data.labels
 import click
 import logging
 
-import datetime
 from datetime import date
 
 import matplotlib.pyplot as plt
@@ -87,14 +86,14 @@ def plot(start_date, end_date, output_filepath):
         data = read_raw_dmps(start_date)
     
     else:
-        datelist = pd.date_range(start=start_date,end=end_date).to_pydatetime().tolist()
+        datelist = pd.date_range(start=start_date, end=end_date).to_pydatetime().tolist()
 
-        for date in datelist:
+        for d in datelist:
             try:
-                df = read_raw_dmps(date)
+                df = read_raw_dmps(d)
                 
             except FileNotFoundError:
-                logging.warning(f"File not found for date: {date}")
+                logging.warning(f"File not found for date: {d}")
                 continue
         
             data.append(df)    
@@ -103,9 +102,9 @@ def plot(start_date, end_date, output_filepath):
 
     inv_data = invert(data)
     
-    plt.pcolor(inv_data.index, inv_data.columns, np.log10(abs(inv_data.values[::1,::1].T)+1e-6), cmap='jet')
+    plt.pcolor(inv_data.index, inv_data.columns, np.log10(abs(inv_data.values[::1, ::1].T)+1e-6), cmap='jet')
 
-    plt.clim(0,4)
+    plt.clim(0, 4)
     plt.yscale('log')
     
     if output_filepath is None:
@@ -113,8 +112,6 @@ def plot(start_date, end_date, output_filepath):
     else:
         plt.savefig(output_filepath)
 
-    
-    
-    
+
 if __name__ == '__main__':
     cli()

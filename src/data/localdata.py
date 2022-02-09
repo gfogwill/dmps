@@ -90,11 +90,11 @@ def read_raw_dmps(date) -> pd.DataFrame:
     
     fi = raw_data_path / date.strftime(format="DM%Y%m%d.DAT")
 
-    logging.info('File name: ' / fi)
+    logging.info('File name: ' + fi)
 
-    year = date.year  # fi.stem[2:6]
-    month = date.month  # fi.stem[6:8]
-    day = date.day  # fi.stem[8:10]
+    year = date.year
+    month = date.month
+    day = date.day
 
     # Read odd rows (starting with first line)
     names_odd_rows = ['hour', 'minute', 'second',

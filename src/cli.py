@@ -8,7 +8,6 @@ import src.data.labels
 import click
 import logging
 
-import datetime
 from datetime import date
 
 import matplotlib.pyplot as plt
@@ -40,27 +39,31 @@ def cli():
 def info():
     """Get more information about dmps."""
     click.secho(LOGO, fg="green")
-    click.echo(
-        "\n"
-    )
+    click.echo("\n")
 
 
 @cli.command()
 @click.option('--input-filepath', type=click.Path(exists=True), default=None)
 @click.option('--output-filepath', type=click.Path(), default=None)
-@click.option('--start-date', type=click.DateTime(formats=["%Y-%m-%d"]), default=str(date.today()))
-@click.option('--end-date', type=click.DateTime(formats=["%Y-%m-%d"]), default=str(date.today()))
-@click.option('--dataset-name', type=str, default='mbi-ea')
+@click.option('--year', type=int)
+@click.option('--dataset-name', type=str, default='mbi-cle')
 @click.option('--analysis-freq', type=str, default='1d')
-def npf(input_filepath, output_filepath, start_date, end_date, dataset_name, analysis_freq):
+def npf(input_filepath, output_filepath, year, dataset_name, analysis_freq):
     """Mannualy label new particle formation events of DMPS files
 
         input_filepath: path
         output_filepath: path
     # """
 
+    if year is None:
+        year = click.prompt("Year to process?")
+
+    if dataset_name is None:
+        dataset_name = click.prompt("Dataset name?")
+
     src.data.labels.manual_labels(input_filepath=input_filepath,
                                   output_filepath=output_filepath,
+                                  year=year,
                                   dataset_name=dataset_name,
                                   analysis_freq=analysis_freq)
 
@@ -81,14 +84,14 @@ def plot(start_date, end_date, output_filepath):
         data = read_raw_dmps(start_date)
     
     else:
-        datelist = pd.date_range(start=start_date,end=end_date).to_pydatetime().tolist()
+        datelist = pd.date_range(start=start_date, end=end_date).to_pydatetime().tolist()
 
-        for date in datelist:
+        for d in datelist:
             try:
-                df = read_raw_dmps(date)
+                df = read_raw_dmps(d)
                 
             except FileNotFoundError:
-                logging.warning(f"File not found for date: {date}")
+                logging.warning(f"File not found for date: {d}")
                 continue
         
             data.append(df)    
@@ -97,9 +100,9 @@ def plot(start_date, end_date, output_filepath):
 
     inv_data = invert(data)
     
-    plt.pcolor(inv_data.index, inv_data.columns, np.log10(abs(inv_data.values[::1,::1].T)+1e-6), cmap='jet')
+    plt.pcolor(inv_data.index, inv_data.columns, np.log10(abs(inv_data.values[::1, ::1].T)+1e-6), cmap='jet')
 
-    plt.clim(0,4)
+    plt.clim(0, 4)
     plt.yscale('log')
     
     if output_filepath is None:
@@ -107,8 +110,6 @@ def plot(start_date, end_date, output_filepath):
     else:
         plt.savefig(output_filepath)
 
-    
-    
-    
+
 if __name__ == '__main__':
     cli()

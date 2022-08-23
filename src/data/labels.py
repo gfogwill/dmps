@@ -21,16 +21,16 @@ mngr.window.setGeometry = (50, 100, 640, 545)
 plt.show(block=False)
 
 
-def manual_labels(input_filepath=None, output_filepath=None, dataset_name=None, save_X_y=True,
+def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_name=None, save_X_y=True,
                   analysis_freq='1d'):
     """Manually label NPF events
 
     """
 
-    # if year is None:
-    #     raise Exception('Year is needed!')
-    # else:
-    #     year = str(year)
+    if year is None:
+        raise Exception('Year is needed!')
+    else:
+        year = str(year)
 
     if input_filepath is None:
         input_filepath = pathlib.Path(external_data_path)
@@ -40,7 +40,7 @@ def manual_labels(input_filepath=None, output_filepath=None, dataset_name=None, 
     if output_filepath is None:
         output_filepath = processed_data_path / f'events-{year}.csv'
 
-    # clean_dir(processed_data_path / year)
+    clean_dir(processed_data_path / year)
 
     data, flag = read_cle_file(input_filepath / dataset_name / f'DMPSmbiocle{year}.dat',
                                has_flag=True,
@@ -60,6 +60,7 @@ def manual_labels(input_filepath=None, output_filepath=None, dataset_name=None, 
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d %H:%M'))
         date_str = idx.strftime('%Y-%m-%d')
         plt.title(date_str)
+        fig.autofmt_xdate()
 
         plt.yscale('log')
         plt.draw()

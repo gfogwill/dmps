@@ -54,7 +54,7 @@ def invert(raw_data):
     ldp = np.log10(dp_peak)
 
     # Final grid
-    inv_data = raw_data.copy()
+    inv_data = raw_data
 
     # Calculate channel borders
     dp_limits = np.mean([np.append(np.nan, ldp.values), np.append(ldp.values, np.nan)], axis=0)
@@ -135,8 +135,6 @@ def invert(raw_data):
     #     result(1, 3: nk + 2)=parkoko(:, 1)';
     return pd.DataFrame(index=inv_data.index, data=kokoja.transpose(), columns=dp_peak)
     
-    #return kokoja, totconc, dp_peak
-
 
 def intfun(dp, t, press, p, volt, pituus, arkaksi, aryksi, qa, qc, qm, qs, cpcmodel, dmamodel, pipelength, pipeflow):
     dporig = dp
@@ -436,11 +434,6 @@ def min_mob(mob, t, p):
     return dpt
 
 
-def cunn(dp, t, p):
-    c = 1.0 + rlambda(t, p) / dp * (2.514 + 0.800 * np.exp(-0.55 * dp / rlambda(t, p)))
-    return c
-
-
 def rlambda(t, p):
     dm = 3.7e-10
     avoc = 6.022e23
@@ -460,8 +453,8 @@ def get_daily_mean_voltages(data):
 
 
 def reynolds(pipeflow, pipediameter, t, pr):
-    density = 1.29 * (273 / t) * (pr / 101325)
-    pipearea = np.pi / 4 * pipediameter ** 2
+    density = 1.29 * (273. / t) * (pr / 101325.)
+    pipearea = np.pi / 4. * pipediameter ** 2
 
     velocity = pipeflow / pipearea
     rey = density * velocity * pipediameter / visc(t)

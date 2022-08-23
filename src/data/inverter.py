@@ -136,7 +136,6 @@ def invert(raw_data):
     return pd.DataFrame(index=inv_data.index, data=kokoja.transpose(), columns=dp_peak)
     
 
-
 def intfun(dp, t, press, p, volt, pituus, arkaksi, aryksi, qa, qc, qm, qs, cpcmodel, dmamodel, pipelength, pipeflow):
     dporig = dp
     dp = 10. ** dp
@@ -433,9 +432,6 @@ def min_mob(mob, t, p):
         dpt = ee * cunn(dp, t, p) / (3 * np.pi * visc(t) * mob)  # tulos
 
     return dpt
-
-
-
 
 
 def rlambda(t, p):

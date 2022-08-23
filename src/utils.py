@@ -62,13 +62,6 @@ def record_time_interval(section, start_time, line_break=False):
         logger.debug("PROCESS_TIME:{:>36}    {} {}".format(section, round(delta, 1), units))
     return end_time
 
-# def normalize_numpy_dict(d):
-#     ret = d.copy()
-#     for k, v in ret.items():
-#         if isinstance(v, np.generic):
-#             ret[k] = np.asscalar(v)
-#     return ret
-
 
 def clean_dir(folder):
     for filename in os.listdir(folder):
@@ -138,6 +131,7 @@ def list_dir(path, fully_qualified=False, glob_pattern='*'):
 
 def read_space_delimited(filename, skiprows=None, class_labels=True):
     """Read an space-delimited file
+
     skiprows: list of rows to skip when reading the file.
     Note: we can't use automatic comment detection, as
     `#` characters are also used as data labels.

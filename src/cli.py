@@ -39,9 +39,7 @@ def cli():
 def info():
     """Get more information about dmps."""
     click.secho(LOGO, fg="green")
-    click.echo(
-        "\n"
-    )
+    click.echo("\n")
 
 
 @cli.command()

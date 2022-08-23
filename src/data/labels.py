@@ -1,4 +1,7 @@
+import os
 import pathlib
+import shutil
+
 import numpy as np
 import pandas as pd
 
@@ -8,7 +11,6 @@ from .localdata import read_cle_file
 
 import matplotlib.dates as mdates
 
-from ..utils import clean_dir
 from ..paths import processed_data_path, external_data_path
 
 
@@ -94,3 +96,14 @@ def manual_labels(input_filepath=None, output_filepath=None, year=None, dataset_
 if __name__ == '__main__':
     manual_labels()
 
+
+def clean_dir(folder):
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))

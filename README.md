@@ -32,7 +32,7 @@ recommend creating a virtual environment with a tool such as
 ```console
 $ python -m venv venv
 $ source venv/bin/activate
-$ make requirements
+$ pip install -r requirements.txt
 ```
 
 Every time you start a new session you need to activate the virtual environment.

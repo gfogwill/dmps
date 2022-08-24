@@ -90,7 +90,7 @@ def read_raw_dmps(date) -> pd.DataFrame:
     
     fi = raw_data_path / date.strftime(format="DM%Y%m%d.DAT")
 
-    logging.info('File name: ' + fi)
+    logging.info('File name: ' + str(fi))
 
     year = date.year
     month = date.month

@@ -11,6 +11,8 @@ import logging
 from datetime import date
 
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+
 import numpy as np
 import pandas as pd
 
@@ -72,12 +74,9 @@ def npf(input_filepath, output_filepath, year, dataset_name, analysis_freq):
 @click.option('--start-date', type=click.DateTime(formats=["%Y-%m-%d"]), default=str(date.today()))
 @click.option('--end-date', type=click.DateTime(formats=["%Y-%m-%d"]), default=None)
 @click.option('--output-filepath', type=click.Path(), default=None)
-def plot(start_date, end_date, output_filepath):
-    """Plot DMPS inverted data
-
-        start-date: datetime
-        end-date: datetime
-    # """
+@click.option('--plot-freq', type=str, default='1d')
+def plot(start_date, end_date, output_filepath, plot_freq):
+    """Plot DMPS inverted data """
     data = []
     
     if end_date is None:
@@ -93,23 +92,39 @@ def plot(start_date, end_date, output_filepath):
             except FileNotFoundError:
                 logging.warning(f"File not found for date: {d}")
                 continue
-        
+            except UnicodeDecodeError:
+                logging.error(f"Error in file: {d}")
+                continue
             data.append(df)    
             
         data = pd.concat(data, axis=0)
 
     inv_data = invert(data)
-    
-    plt.pcolor(inv_data.index, inv_data.columns, np.log10(abs(inv_data.values[::1, ::1].T)+1e-6), cmap='jet')
 
-    plt.clim(0, 4)
-    plt.yscale('log')
-    
-    if output_filepath is None:
-        plt.show()
-    else:
-        plt.savefig(output_filepath)
+    for idx, day in inv_data.groupby(pd.Grouper(freq=plot_freq)):
+        fig, ax = plt.subplots()
+
+        plt.pcolor(day.index,
+                   day.columns,
+                   np.log10(abs(day.values[::1, ::1].T)+1e-6),
+                   cmap='jet')
+
+        plt.clim(0, 4)
+        plt.axhline(y=25e-9, color='r', linestyle='-')
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d %H:%M'))
+        fig.autofmt_xdate()
+        date_str = idx.strftime('%Y-%m-%d')
+        plt.title(f"{date_str} - Freq: {plot_freq}")
+        plt.yscale('log')
+
+        if output_filepath is None:
+            plt.show()
+        else:
+            plt.savefig(output_filepath + f'/{date_str}.jpg')
 
 
 if __name__ == '__main__':
-    cli()
+    plot(['--start-date', '2013-04-10',
+          '--end-date', '2013-04-12',
+          '--output-filepath', '/home/perezfo/Desktop',
+          '--plot-freq', '3d'])

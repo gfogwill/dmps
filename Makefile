@@ -9,9 +9,6 @@ PROFILE = default
 PROJECT_NAME = dmps
 PYTHON_INTERPRETER = python3
 
-export http_proxy=http://proxy-do.smn.gov.ar:8080
-export https_proxy=http://proxy-do.smn.gov.ar:8080
-
 ifeq (,$(shell which conda))
 HAS_CONDA=False
 else

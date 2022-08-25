@@ -124,7 +124,7 @@ def plot(start_date, end_date, output_filepath, plot_freq):
 
 
 if __name__ == '__main__':
-    plot(['--start-date', '2013-04-10',
-          '--end-date', '2013-04-12',
+    plot(['--start-date', '2015-01-01',
+          '--end-date', '2015-12-31',
           '--output-filepath', '/home/perezfo/Desktop',
-          '--plot-freq', '3d'])
+          '--plot-freq', '1m'])

@@ -99,13 +99,16 @@ def read_raw_dmps(date) -> pd.DataFrame:
     # Read odd rows (starting with first line)
     names_odd_rows = ['hour', 'minute', 'second',
                       'temp', 'press', 'hum', 'NA', 'excess', 'sample',
-                      'voltage_1', 'voltage_2', 'voltage_3', 'voltage_4', 'voltage_5', 'voltage_6', 'voltage_7',
-                      'voltage_8', 'voltage_9', 'voltage_10',
-                      'voltage_11', 'voltage_12', 'voltage_13', 'voltage_14', 'voltage_15', 'voltage_16', 'voltage_17',
-                      'voltage_18', 'voltage_19', 'voltage_20',
+                      'voltage_1', 'voltage_2', 'voltage_3', 'voltage_4', 'voltage_5',
+                      'voltage_6', 'voltage_7', 'voltage_8', 'voltage_9', 'voltage_10',
+                      'voltage_11', 'voltage_12', 'voltage_13', 'voltage_14', 'voltage_15',
+                      'voltage_16', 'voltage_17', 'voltage_18', 'voltage_19', 'voltage_20',
                       'voltage_21', 'voltage_22', 'voltage_23', 'voltage_24', 'voltage_25']
-    
-    data_even_rows = pd.read_csv(fi, sep='\t', skiprows=lambda x: x % 2 == 1, names=names_odd_rows)
+
+    try:
+        data_even_rows = pd.read_csv(fi, sep='\t', skiprows=lambda x: x % 2 == 1, names=names_odd_rows)
+    except ParserError:
+        logging.error(f"Error in file: {fi}")
 
     data_even_rows['year'] = year
     data_even_rows['month'] = month

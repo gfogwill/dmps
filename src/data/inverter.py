@@ -35,7 +35,7 @@ def invert(raw_data):
     logging.info('Reynolds number in sample line: ' + str(reynolds_number))
     # logging.info('File name: ' + filena(1:10))
     logging.info('Temperature:  ' + str(t - 273.15) + ' C')
-    logging.info('Pressure:     ' + str(pr/100) + ' hPa')
+    logging.info('Pressure:     ' + str(pr / 100) + ' hPa')
     logging.info('RH:           ' + str(rh) + ' %')
     logging.info('Aerosol flow: ' + str(sample) + ' L/min')
     logging.info('Sheath flow:  ' + str(flow) + ' L/min')
@@ -70,20 +70,20 @@ def invert(raw_data):
     # Integrate hetransfer functions(check: Stohlzenburg 1988)
     for ii in range(0, voltages.__len__()):
         for jj in range(0, dp_peak.__len__()):
-            tee[ii, jj] = integrate.quadrature(intfun, 
-                                               np.log10(dp_limits[jj]), 
+            tee[ii, jj] = integrate.quadrature(intfun,
+                                               np.log10(dp_limits[jj]),
                                                np.log10(dp_limits[jj + 1]),
-                                               args=(t, pr, p, voltages[ii], 
-                                                     dma_values['pituus1'], 
-                                                     dma_values['arkaksi1'], 
+                                               args=(t, pr, p, voltages[ii],
+                                                     dma_values['pituus1'],
+                                                     dma_values['arkaksi1'],
                                                      dma_values['aryksi1'],
-                                                     dma_values['qa1'], 
-                                                     dma_values['qc1'], 
+                                                     dma_values['qa1'],
+                                                     dma_values['qc1'],
                                                      dma_values['qm1'],
                                                      dma_values['qs1'],
-                                                     dma_values['cpcmodel1'], 
+                                                     dma_values['cpcmodel1'],
                                                      dma_values['dmamodel1'],
-                                                     dma_values['pipelength'], 
+                                                     dma_values['pipelength'],
                                                      dma_values['pipeflow']),
                                                miniter=15, maxiter=200)[0] \
                           / (np.log10(dp_limits[jj + 1]) - np.log10(dp_limits[jj]))
@@ -107,9 +107,10 @@ def invert(raw_data):
         # Multiplying the concentration with kernel(=from Stohlzenburg thesis) and dlogDp
 
         if tikh != 1:
-            #kokojak = pmatriisi'*conc'. * (1. / parkoko(:, 2))
+            # kokojak = pmatriisi'*conc'. * (1. / parkoko(:, 2))
             # NOTE: tee=matriisi
             kokojak = nnls(tee.T, conc)[0] * (1. / dlogdp)
+
 
         # TODO: Complete option below
         # if tikh == 1:
@@ -134,7 +135,7 @@ def invert(raw_data):
     #     ';
     #     result(1, 3: nk + 2)=parkoko(:, 1)';
     return pd.DataFrame(index=inv_data.index, data=kokoja.transpose(), columns=dp_peak)
-    
+
 
 def intfun(dp, t, press, p, volt, pituus, arkaksi, aryksi, qa, qc, qm, qs, cpcmodel, dmamodel, pipelength, pipeflow):
     dporig = dp
@@ -292,11 +293,11 @@ def varaus(dp, pp, t):
 
     for i in range(1, 7):
         coefft[:, 0:min(2, pp.__len__())] = coefft[:, 0:min(2, pp.__len__())] + (
-                alfa[0:min(2, pp.__len__()), i-1] * (np.log10(dp / 1e-9)[:, np.newaxis] ** (i - 1)))
+                alfa[0:min(2, pp.__len__()), i - 1] * (np.log10(dp / 1e-9)[:, np.newaxis] ** (i - 1)))
 
     coeff[:, 0:min(2, pp.__len__())] = 10 ** coefft[:, 0:min(2, pp.__len__())]
 
-    for i in range(2, pp.__len__()-1):
+    for i in range(2, pp.__len__() - 1):
         coe = (2.0 * np.pi * eo * dp * boltz * t) / e ** 2
         coeff[:, i] = ((1.0 / np.sqrt(coe * 2.0 * np.pi)) * np.exp(
             -(-np.sign(pp[0]) * i - coe * 0.1335) ** 2 / (2.0 * coe)))
@@ -470,21 +471,21 @@ def get_dma_const():
     # This is used after 11.3.2003 at Utö
 
     # Change the system information here
-    dma_const = dict(tem=295.15, 
-                     press=1.00e5, 
-                     rh=999.99, dmalkm=1, 
-                     volt1lkm=25, 
-                     polarity=-1, 
+    dma_const = dict(tem=295.15,
+                     press=1.00e5,
+                     rh=999.99, dmalkm=1,
+                     volt1lkm=25,
+                     polarity=-1,
                      pipelength=2.0,
-                     pipeflow=1 / 1000 / 60, 
-                     pipediameter=4 / 1000, 
-                     pituus1=0.28, 
-                     arkaksi1=3.3e-2, 
+                     pipeflow=1 / 1000 / 60,
+                     pipediameter=4 / 1000,
+                     pituus1=0.28,
+                     arkaksi1=3.3e-2,
                      aryksi1=2.5E-2,
-                     dmamodel1='HAUM', 
-                     cpcmodel1='3010', 
-                     qc1=5.0 / 1000 / 60, 
-                     qm1=5.0 / 1000 / 60, 
+                     dmamodel1='HAUM',
+                     cpcmodel1='3010',
+                     qc1=5.0 / 1000 / 60,
+                     qm1=5.0 / 1000 / 60,
                      qa1=1.0 / 1000 / 60,
                      qs1=1.0 / 1000 / 60)
     return dma_const

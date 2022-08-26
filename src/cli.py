@@ -32,7 +32,7 @@ ______ ___  _________  _____
 @click.version_option(__version__, "--version", "-V", help="Show version and exit")
 def cli():  
     """dmps is a CLI for working with DMPS observations data. For more
-    information, type ``dmps info``.
+    information, type ``dmps info``. very important information
     """
     pass
 
